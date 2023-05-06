@@ -1,0 +1,15 @@
+theme:
+  name: terminal
+  icon:
+    repo: fontawesome/brands/github
+repo_url: https://github.com/SupaschaiPh/LGor-Public/
+repo_name: SupaschaiPh/none1
+site_name: Hello
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
