@@ -20,5 +20,5 @@ jobs:
           path: .cache
       - run: pip install mkdocs-terminal
       - run: ls .
-      - run: mkdocs build
+      - run: cd ./document && mkdocs build
       - run: cd ./document && mkdocs gh-deploy --force
