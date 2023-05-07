@@ -5,7 +5,7 @@ theme:
 repo_url: https://github.com/SupaschaiPh/LGor-Public/
 site_url: https://supaschaiph.github.io/LGor-Public/
 repo_name: LGor-Public
-site_name: LGor แอลกอ
+site_name: Lกอ
 
 markdown_extensions:
   - pymdownx.highlight:
