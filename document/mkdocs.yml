@@ -1,10 +1,12 @@
 theme:
   name: terminal
-  icon:
-    repo: fontawesome/brands/github
+  features:
+    - footer.prev_next
 repo_url: https://github.com/SupaschaiPh/LGor-Public/
-repo_name: SupaschaiPh/none1
-site_name: Hello
+site_url: https://supaschaiph.github.io/LGor-Public/
+repo_name: LGor-Public
+site_name: LGor แอลกอ
+
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
