@@ -5,7 +5,6 @@
 package control;
 
 import java.awt.event.*;
-import java.util.ArrayList;
 import javax.swing.*;
 import lgor.LGor;
 import model.Problem;
@@ -19,16 +18,25 @@ import source.*;
 public class CreateProblemCon implements ActionListener {
 
     private CreateProblemView view;
-    private CreateProblemViewSub1View subView1 = new CreateProblemViewSub1View();
+    private CreateProblemViewSub1View subView1;
+    private int problemIndex = -1;
 
     public CreateProblemCon() {
+        subView1 = new CreateProblemViewSub1View();
         subView1.getOk().addActionListener(this);
+    }
+
+    public CreateProblemCon(Problem pb, int problemIndex) {
+        view = new CreateProblemView(pb);
+        this.problemIndex = problemIndex;
+        this.view.getMapEditor().renderQuoataView();
+        this.view.getProblemEditorView().getButton().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        if (e.getSource().equals(subView1.getOk())) {
+        if (subView1 != null && e.getSource().equals(subView1.getOk())) {
             try {
                 this.subView1.getSubFrame1().dispose();
                 view = new CreateProblemView(Integer.parseInt(subView1.getRows().getText()),
@@ -86,7 +94,14 @@ public class CreateProblemCon implements ActionListener {
                 Problem pb = new Problem(name, desc, rank, renderedMap, charaterStatrPosition,
                         anctionStartOfChar, limitCommand,
                         countMustKeepItem, author);
-                LGor.LGorProblemData.add(pb);
+                if (problemIndex == -1) {
+                    LGor.LGorProblemData.add(pb);
+                } else {
+                    System.out.println("??");
+                    LGor.LGorProblemData.remove(problemIndex);
+                    LGor.LGorProblemData.add(problemIndex, pb);
+                }
+
                 LGor.save();
                 this.view.getFrame().dispose();
             } catch (Exception ex) {
@@ -96,6 +111,30 @@ public class CreateProblemCon implements ActionListener {
             }
         }
 
+    }
+
+    public CreateProblemView getView() {
+        return view;
+    }
+
+    public void setView(CreateProblemView view) {
+        this.view = view;
+    }
+
+    public CreateProblemViewSub1View getSubView1() {
+        return subView1;
+    }
+
+    public void setSubView1(CreateProblemViewSub1View subView1) {
+        this.subView1 = subView1;
+    }
+
+    public int getProblemIndex() {
+        return problemIndex;
+    }
+
+    public void setProblemIndex(int problemIndex) {
+        this.problemIndex = problemIndex;
     }
 
 }

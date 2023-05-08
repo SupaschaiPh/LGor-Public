@@ -24,16 +24,7 @@ public class PlayGroundCon implements ActionListener {
     private User user;
     private boolean run = false;
 
-    public void reset() {
-        if (this.view != null) {
-            view.frame.dispose();
-        }
-        this.view = null;
-        view = new PlayGroundView(pb);
-        this.view.getMenuItem1().addActionListener(this);
-        this.view.getMenuItem2().addActionListener(this);
-        this.run = false;
-    }
+    
 
     public PlayGroundCon() {
         int map[][] = {{1, 2, 2, 3, 2, 1, 2, 0, 0, 0},
@@ -54,6 +45,17 @@ public class PlayGroundCon implements ActionListener {
 
     }
 
+    public void reset() {
+        if (this.view != null) {
+            view.frame.dispose();
+        }
+        this.view = null;
+        view = new PlayGroundView(pb);
+        this.view.getMenuItem1().addActionListener(this);
+        this.view.getMenuItem2().addActionListener(this);
+        this.run = false;
+    }
+    
     public PlayGroundCon(int problemIndex, UseWithPlayGroundAble pb, UserAdapter user) {
         this.setPlayGroundCon(problemIndex, pb, user);
         this.reset();

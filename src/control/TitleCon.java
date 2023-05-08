@@ -38,7 +38,7 @@ public class TitleCon implements ActionListener,WindowListener{
             Thread ttt = new Thread(tt);
             ttt.start();
         }else if(e.getSource().equals(view.getStart())){
-            MapSelectCon msc = new MapSelectCon(view.getJf().getLocation().x,view.getJf().getLocation().y,
+            ProblemSelectCon msc = new ProblemSelectCon(view.getJf().getLocation().x,view.getJf().getLocation().y,
             view.getJf().getWidth(),view.getJf().getHeight());
             BackFrameBefore.frameBefore = this.view.getJf();
             BackFrameBefore.curFrame = msc.getView().getFrame();

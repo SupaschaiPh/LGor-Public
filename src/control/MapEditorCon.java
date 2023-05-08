@@ -7,6 +7,7 @@ package control;
 
 import java.awt.event.*;
 import javax.swing.*;
+import model.Problem;
 import view.MapEditorView;
 import source.*;
 import view.QuotaView;
@@ -29,6 +30,26 @@ public class MapEditorCon implements ActionListener {
         view = new MapEditorView(rows, cols, this);
     }
 
+    public MapEditorCon(Problem pb) {
+        view = new MapEditorView(pb.getMap(), pb.getCharaterStatrPosition(),pb.getAnctionStartOfChar(), this);
+
+    }
+
+    public void renderQuoataView(){
+        if (this.haveChar) {
+            this.quotaView.setCountChar(0);
+        } else {
+            this.quotaView.setCountChar(1);
+
+        }
+        if (this.haveCow) {
+            this.quotaView.setCountCow(0);
+        } else {
+            this.quotaView.setCountCow(1);
+
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -83,19 +104,8 @@ public class MapEditorCon implements ActionListener {
         } else if (fixKeyInput == 3) {
             this.haveCow = false;
         }
-
-        if (this.haveChar) {
-            this.quotaView.setCountChar(0);
-        } else {
-            this.quotaView.setCountChar(1);
-
-        }
-        if (this.haveCow) {
-            this.quotaView.setCountCow(0);
-        } else {
-            this.quotaView.setCountCow(1);
-
-        }
+        this.renderQuoataView();
+        
     }
 
     public int getRows() {
@@ -145,6 +155,5 @@ public class MapEditorCon implements ActionListener {
     public void setQuotaView(QuotaView quotaView) {
         this.quotaView = quotaView;
     }
-
 
 }

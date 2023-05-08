@@ -48,7 +48,7 @@ public class AllTitle {
         title.put("SolveProblem", "แก้ปัญหา");
         title.put("Passed", "ผ่าน");
         title.put("Not Passed", "ยังไม่ผ่าน");
-title.put("Not found", "ไม่พบ");//Not found
+        title.put("Not found", "ไม่พบ");//Not found
 
     }
 
