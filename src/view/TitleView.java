@@ -27,7 +27,7 @@ public class TitleView {
 
     public TitleView() {
         jp.add(logo);
-        logo.setPreferredSize(new Dimension(200,150));
+        logo.setPreferredSize(new Dimension(257,147));
 
         jp2.setLayout(new GridLayout(5, 1));
         jp2.add(new SuComponent().getPanel(start));
