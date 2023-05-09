@@ -38,11 +38,13 @@ public class CreateProblemCon implements ActionListener {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         if (subView1 != null && e.getSource().equals(subView1.getOk())) {
             try {
+                Integer.parseInt(subView1.getRows().getText());
+                Integer.parseInt(subView1.getCol().getText());
                 this.subView1.getSubFrame1().dispose();
                 view = new CreateProblemView(Integer.parseInt(subView1.getRows().getText()),
                         Integer.parseInt(subView1.getCol().getText()));
                 this.view.getProblemEditorView().getButton().addActionListener(this);
-
+                
             } catch (Exception ex) {
                 this.subView1.getWarningText().setText("Row กับ Col ต้องเป็นตัวเลขเท่านั้น");
                 this.subView1.getSubFrame1().pack();
@@ -69,7 +71,6 @@ public class CreateProblemCon implements ActionListener {
                 int charaterStatrPosition[] = new int[2];
 
                 for (int r = 0; r < preGenMap.length; r++) {
-
                     for (int c = 0; c < preGenMap[r].length; c++) {
                         int elId = Integer.parseInt(preGenMap[r][c].getToolTipText());;
                         if (elId > ElementId.Cow) {
@@ -97,7 +98,6 @@ public class CreateProblemCon implements ActionListener {
                 if (problemIndex == -1) {
                     LGor.LGorProblemData.add(pb);
                 } else {
-                    System.out.println("??");
                     LGor.LGorProblemData.remove(problemIndex);
                     LGor.LGorProblemData.add(problemIndex, pb);
                 }

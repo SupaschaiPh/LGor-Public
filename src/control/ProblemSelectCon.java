@@ -89,6 +89,7 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
             }
         } else if (e.getSource().equals(this.view.getMitem2())) {
             cpc = new CreateProblemCon();
+            
             index = LGor.LGorProblemData.size() - 1;
             Thread t = new Thread(this);
             t.start();

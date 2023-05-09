@@ -65,7 +65,6 @@ public class CreateProblemView {
         //(intFrame1.getSize().width+intFrame2.getSize().width)/3 //250
         if (intFrame1.getSize().width > 500) {
             int divv = (int) Math.ceil(Double.parseDouble("" + intFrame1.getSize().width) / 500);
-            System.out.println(divv);
             intFrame1.setSize(intFrame1.getSize().width / divv, intFrame1.getSize().height / divv);
         }
         
