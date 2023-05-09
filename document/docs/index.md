@@ -1,7 +1,9 @@
-<center>
+<div align="center">
+<center >
   
 # Lกอ
+![img](image/logo.png)  
 SoftWare สำหรับฝึกทักษะอัลกอริทึมในการแก้ปัญหาอย่างมีระบบ
- ![img](image/ภาพถ่ายหน้าจอ.png)
-  
+
 </center>
+</div>
