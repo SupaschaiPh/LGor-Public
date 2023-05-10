@@ -16,7 +16,7 @@ import source.*;
  */
 public class PlayGroundView {
 
-    public JFrame frame = new JFrame();
+    private JFrame frame = new JFrame();
     private JDesktopPane mdiConatainer;
     private JInternalFrame intFrame1, intFrame2, intFrame3;
     private JMenuBar menuBar = new SuComponent().getMenuBar();
@@ -32,6 +32,7 @@ public class PlayGroundView {
     private CodeBlockCon cb;
     private MapView mapV ;
     private ProblemView problemView;
+    private int topsep = 10;
 
     public PlayGroundView(Problem pb) {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -84,9 +85,9 @@ public class PlayGroundView {
 
         int xCenter = (1920-(intFrame1.getSize().width+intFrame2.getSize().width))/4;
         
-        intFrame2.setLocation(xCenter, 0);
-        intFrame1.setLocation(intFrame2.getLocation().x+intFrame2.getSize().width, intFrame3.getSize().height);
-        intFrame3.setLocation(intFrame2.getLocation().x+intFrame2.getSize().width, 0);
+        intFrame2.setLocation(xCenter, topsep);
+        intFrame1.setLocation(intFrame2.getLocation().x+intFrame2.getSize().width, intFrame3.getSize().height+topsep);
+        intFrame3.setLocation(intFrame2.getLocation().x+intFrame2.getSize().width, topsep);
         this.cb.setperfecLocationForSubV(intFrame1.getLocation().x, intFrame1.getLocation().y);
 
         mdiConatainer.setVisible(true);

@@ -200,19 +200,19 @@ public class Character extends JPanel implements Runnable {
     public void walk(String action) {
         stillWalking = true;
         if (action.equals(AllTitle.commandList[0].replace("()", ""))) {
-            this.action = "waitG";
+            //this.action = "waitG";
             this.action = "go";
             this.y = this.getSize().height / divForCalculateMapBolck;
         } else if (action.equals(AllTitle.commandList[1].replace("()", ""))) {
-            this.action = "waitB";
+            //this.action = "waitB";
             this.action = "goDown";
             this.y = -this.getSize().height / divForCalculateMapBolck;
         } else if (action.equals(AllTitle.commandList[2].replace("()", ""))) {
-            this.action = "waitL";
+            //this.action = "waitL";
             this.action = "goLeft";
             this.x = this.getSize().width / divForCalculateMapBolck;
         } else if (action.equals(AllTitle.commandList[3].replace("()", ""))) {
-            this.action = "waitR";
+            //this.action = "waitR";
             this.action = "goRight";
             this.x = -this.getSize().width / divForCalculateMapBolck;
         } else if (action.equals(AllTitle.commandList[0].replace("()", "2"))) {

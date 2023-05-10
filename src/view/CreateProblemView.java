@@ -24,7 +24,7 @@ public class CreateProblemView {
     private MapEditorCon mapEditor;
     private ProblemEditorView problemEditorView = new ProblemEditorView();
     private QuotaView quotaView = new QuotaView();
-    private int topsep = 10;
+    private int topsep = 30;
     
     private int rows, cols;
     

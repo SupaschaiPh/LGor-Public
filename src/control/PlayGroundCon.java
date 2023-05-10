@@ -51,7 +51,7 @@ public class PlayGroundCon implements ActionListener, WindowListener {
 
     public void reset() {
         if (this.view != null) {
-            view.frame.dispose();
+            view.getFrame().dispose();
         }
         this.view = null;
         view = new PlayGroundView(pb);

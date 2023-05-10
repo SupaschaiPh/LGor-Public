@@ -161,7 +161,7 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
 
     @Override
     public void run() {
-        while ((this.pgc != null && this.pgc.getView() != null && this.pgc.getView().frame != null && this.pgc.getView().frame.isVisible()) || 
+        while ((this.pgc != null && this.pgc.getView() != null && this.pgc.getView().getFrame() != null && this.pgc.getView().getFrame().isVisible()) || 
                 (this.cpc != null && this.cpc.getView() != null && this.cpc.getView().getFrame() != null && this.cpc.getView().getFrame().isVisible())||
                 (this.cpc != null && this.cpc.getSubView1() != null && this.cpc.getSubView1().getSubFrame1() != null && this.cpc.getSubView1().getSubFrame1().isVisible())) {
             try {

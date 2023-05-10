@@ -114,9 +114,9 @@ public class LGor {
                 * 
                 * 
              */
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-       
             //UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+       
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
         }
         new LGor();
