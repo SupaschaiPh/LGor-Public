@@ -60,7 +60,7 @@ public class Tutorial implements Runnable {
     public Problem t2() {
         String name = "Ep 2 : จอนนี่จะเดินลง";
         String description = "แม่วัวตกใจเดินหนีจอนนี่ไปแล้ว"
-                + "\nคำแนะนำ : ให้ใช้คำสั่ง goDown() เพื่อพาจอนนี่เดินลงไปด้านล่าง'";
+                + "\nคำแนะนำ : ให้ใช้คำสั่ง goDown() เพื่อพาจอนนี่เดินลงไปด้านล่าง";
         int rank = 0;
         int[][] map = {
             {0, 1, 0, 1, 0},
@@ -79,7 +79,7 @@ public class Tutorial implements Runnable {
     public Problem t3() {
         String name = "Ep 3 : จอนนี่จะเดินซ้าย";
         String description = "จอนนี่อยากไปซ้ายบ้าง"
-                + "\nคำแนะนำ : ให้ใช้คำสั่ง goLeft() เพื่อพาจอนนี่เดินไปทางซ้าย";
+                + "\nคำแนะนำ : ให้ใช้คำสั่ง goLeft() เพื่อพาจอนนี่เดินไปด้านซ้าย";
         int rank = 0;
         int[][] map = {
             {0, 1, 0, 1, 0},
@@ -98,7 +98,7 @@ public class Tutorial implements Runnable {
     public Problem t4() {
         String name = "Ep 4 : จอนนี่จะเดินขวา";
         String description = "จอนนี่อยากไปขวาบ้าง"
-                + "\nคำแนะนำ : ให้ใช้คำสั่ง goRight() เพื่อพาจอนนี่เดินไปด้านขวา'";
+                + "\nคำแนะนำ : ให้ใช้คำสั่ง goRight() เพื่อพาจอนนี่เดินไปด้านขวา";
         int rank = 0;
         int[][] map = {
             {0, 1, 0, 1, 0},
