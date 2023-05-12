@@ -63,7 +63,7 @@ public class MapEditorView implements BeAbleWorkInMDI {
                         this.map[iRow][iCol].setIcon(source.Character.icon1WithGrass);
                         this.map[iRow][iCol].setToolTipText("4");
                     } else if (charStartAction.equals("waitG")) {
-                        this.map[iRow][iCol].setIcon(source.Character.icon3WithGrass);
+                        this.map[iRow][iCol].setIcon(source.Character.icon2WithGrass);
                         this.map[iRow][iCol].setToolTipText("5");
                     } else if (charStartAction.equals("waitL")) {
                         this.map[iRow][iCol].setIcon(source.Character.icon3WithGrass);

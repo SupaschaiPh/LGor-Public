@@ -8,7 +8,6 @@ package lgor;
  *
  * @author supaschai
  */
-import control.PlayGroundCon;
 import java.util.ArrayList;
 import javax.swing.UIManager;
 import model.*;
