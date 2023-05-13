@@ -85,6 +85,8 @@ public class ProblemSelectView {
 
         container.add(new SuComponent().getBorderPanel(container4, 30));
 
+        frame.setTitle(Theme.appName);
+        frame.setIconImage(Theme.favIcon.getImage());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocation(posx, posy);
         frame.setJMenuBar(mbar);

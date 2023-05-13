@@ -83,6 +83,8 @@ public class CreateProblemView {
         MDI.add(intFrame3);
         
         frame.add(MDI);
+        frame.setTitle(Theme.appName);
+        frame.setIconImage(Theme.favIcon.getImage());
         frame.setVisible(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }

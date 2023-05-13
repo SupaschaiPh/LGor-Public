@@ -45,6 +45,7 @@ public class LGor {
             LGorProblemData = new ArrayList();
             System.out.println(e);
         }
+
     }
     
     public static void save(){
@@ -113,7 +114,7 @@ public class LGor {
                 * 
                 * 
              */
-            //UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+            //UIManager.setLookAndFeel("javax.swing.plaf.multi.MultiLookAndFeel");
        
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {

@@ -24,6 +24,7 @@ public class TitleCon implements ActionListener,WindowListener{
         view.getJf().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         view.getStart().addActionListener(this);
         view.getTutorial().addActionListener(this);
+        view.getmyScore().addActionListener(this);
         view.getJf().addWindowListener(this);
         
     }
@@ -38,10 +39,16 @@ public class TitleCon implements ActionListener,WindowListener{
             Thread ttt = new Thread(tt);
             ttt.start();
         }else if(e.getSource().equals(view.getStart())){
-            ProblemSelectCon msc = new ProblemSelectCon(view.getJf().getLocation().x,view.getJf().getLocation().y,
+            ProblemSelectCon problemSelectCon = new ProblemSelectCon(view.getJf().getLocation().x,view.getJf().getLocation().y,
             view.getJf().getWidth(),view.getJf().getHeight());
             BackFrameBefore.frameBefore = this.view.getJf();
-            BackFrameBefore.curFrame = msc.getView().getFrame();
+            BackFrameBefore.curFrame = problemSelectCon.getView().getFrame();
+            view.getJf().setVisible(false);
+        }else if(e.getSource().equals(view.getmyScore())){
+            MyScoreCon myScoreCon = new MyScoreCon(view.getJf().getLocation().x,view.getJf().getLocation().y,
+            view.getJf().getWidth(),view.getJf().getHeight());
+            BackFrameBefore.frameBefore = this.view.getJf();
+            BackFrameBefore.curFrame = myScoreCon.getView().getFrame();
             view.getJf().setVisible(false);
         }
         

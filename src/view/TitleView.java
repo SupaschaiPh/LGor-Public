@@ -16,46 +16,48 @@ import source.*;
  */
 public class TitleView {
 
-    private JFrame jf = new JFrame();
+    private JFrame frame = new JFrame();
     private JPanel jp = new SuComponent().getPanel(),
             jp2 = new SuComponent().getPanel(),
             jp3 = new SuComponent().getPanel();
-    private JButton start = new SuComponent().getButton("Start"),
-            tutorial = new SuComponent().getButton("Tutorial"),
-            setting = new SuComponent().getButton("Setting");
+    private JButton start = new SuComponent().getButton(AllTitle.title.get("Start")),
+            tutorial = new SuComponent().getButton(AllTitle.title.get("Tutorial")),
+            myScore = new SuComponent().getButton(AllTitle.title.get("MyScore"));
     private Logo logo = new Logo();
 
     public TitleView() {
         jp.add(logo);
-        logo.setPreferredSize(new Dimension(257,147));
+        logo.setPreferredSize(new Dimension(257, 147));
 
         jp2.setLayout(new GridLayout(5, 1));
+        start.setPreferredSize(new Dimension(300, 25));
+        tutorial.setPreferredSize(new Dimension(300, 25));
+        myScore.setPreferredSize(new Dimension(300, 25));
         jp2.add(new SuComponent().getPanel(start));
         jp2.add(new SuComponent().getPanel(tutorial));
-        //jp2.add(new SuComponent().getPanel(setting));
-        start.setPreferredSize(new Dimension(300,25));
-        tutorial.setPreferredSize(new Dimension(300,25));
-        setting.setPreferredSize(new Dimension(300,25));
+        jp2.add(new SuComponent().getPanel(myScore));
         start.setBackground(Theme.FG);
         start.setForeground(Theme.BG);
-        
+
         jp3.setLayout(new BorderLayout());
         jp3.add(jp);
-        jp3.add(jp2,BorderLayout.SOUTH);
-       
-        jf.add(jp3);
-        jf.setSize(600, 400);
-        jf.setLocation(300, 300);
-        jf.setVisible(true);
+        jp3.add(jp2, BorderLayout.SOUTH);
+
+        frame.setTitle(Theme.appName);
+        frame.add(jp3);
+        frame.setIconImage(Theme.favIcon.getImage());
+        frame.setSize(600, 400);
+        frame.setLocation(300, 300);
+        frame.setVisible(true);
 
     }
 
     public JFrame getJf() {
-        return jf;
+        return frame;
     }
 
     public void setJf(JFrame jf) {
-        this.jf = jf;
+        this.frame = jf;
     }
 
     public JPanel getJp() {
@@ -98,12 +100,12 @@ public class TitleView {
         this.tutorial = tutorial;
     }
 
-    public JButton getSetting() {
-        return setting;
+    public JButton getmyScore() {
+        return myScore;
     }
 
-    public void setSetting(JButton setting) {
-        this.setting = setting;
+    public void setmyScore(JButton myScore) {
+        this.myScore = myScore;
     }
 
     public Logo getLogo() {
@@ -113,6 +115,5 @@ public class TitleView {
     public void setLogo(Logo logo) {
         this.logo = logo;
     }
-    
-    
+
 }

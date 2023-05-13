@@ -47,7 +47,7 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
     }
 
     public void renderProblemData() {
-        if (!LGor.LGorProblemData.isEmpty()) {
+        if (LGor.LGorProblemData!=null && !LGor.LGorProblemData.isEmpty()) {
             view.getProblemIndex().setText(index + 1 + "");
             curProblem = LGor.LGorProblemData.get(index);
             view.getSolve().setText(AllTitle.title.get("SolveProblem"));
@@ -73,7 +73,9 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (LGor.LGorProblemData==null || LGor.LGorProblemData.isEmpty()) {
+            return ;
+        }
         if ((index + 1) < LGor.LGorProblemData.size() && e.getSource().equals(view.getRight())) {
             index += 1;
             renderProblemData();

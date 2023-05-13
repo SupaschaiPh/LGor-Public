@@ -68,6 +68,7 @@ public class Character extends JPanel implements Runnable {
     private boolean meetCow = false;
     private boolean alive = true, meetItem = false;
     private int step = 10;
+    private int sep = 20;
     private int divForCalculateMapBolck = 3;
 
     public Character() {
@@ -309,7 +310,7 @@ public class Character extends JPanel implements Runnable {
                     this.setCurTile("right2");
                     this.repaint();
                 } else if (this.action.equals("go")) {
-                    if (this.y <= this.step) {
+                    if (this.y <= this.sep) {
                         this.y = 0;
                         this.action = "waitG";
                     } else {
@@ -323,7 +324,7 @@ public class Character extends JPanel implements Runnable {
                     this.setCurTile("back4");
                     this.repaint();
                 } else if (this.action.equals("goDown")) {
-                    if (this.y >= -this.step) {
+                    if (this.y >= -this.sep) {
                         this.y = 0;
                         this.action = "waitB";
                     } else {
@@ -336,7 +337,7 @@ public class Character extends JPanel implements Runnable {
                     this.setCurTile("go4");
                     this.repaint();
                 } else if (this.action.equals("goLeft")) {
-                    if (this.x <= this.step) {
+                    if (this.x <= this.sep) {
                         this.x = 0;
                         this.action = "waitL";
                     } else {
@@ -349,7 +350,7 @@ public class Character extends JPanel implements Runnable {
                     this.setCurTile("left4");
                     this.repaint();
                 } else if (this.action.equals("goRight")) {
-                    if (this.x >= -this.step) {
+                    if (this.x >= -this.sep) {
                         this.x = 0;
                         this.action = "waitR";
                     } else {

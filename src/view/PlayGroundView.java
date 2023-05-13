@@ -5,7 +5,6 @@
 package view;
 
 import control.CodeBlockCon;
-import java.awt.*;
 import javax.swing.*;
 import model.Problem;
 import source.*;
@@ -22,23 +21,22 @@ public class PlayGroundView {
     private JMenuBar menuBar = new SuComponent().getMenuBar();
     private JMenu menu1 = new SuComponent().getMenu("|"),
             menu2 = new SuComponent().getMenu(">Restart");
-    
-        private JMenuItem menuItem1 = new SuComponent().getMenuItem(">Run"),
+
+    private JMenuItem menuItem1 = new SuComponent().getMenuItem(">Run"),
             menuItem2 = new SuComponent().getMenuItem(">Restart");
 
     private int charaterPosition[];
     private int stackCodeSize;
     private String charaterAction;
     private CodeBlockCon cb;
-    private MapView mapV ;
+    private MapView mapV;
     private ProblemView problemView;
     private int topsep = 10;
 
     public PlayGroundView(Problem pb) {
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
+
         this.stackCodeSize = pb.getStackCodeSize();
-        this.charaterAction = pb.getAnctionStartOfChar(); 
+        this.charaterAction = pb.getAnctionStartOfChar();
         JPanel tem = new JPanel();
 
         mdiConatainer = new JDesktopPane();
@@ -49,11 +47,6 @@ public class PlayGroundView {
         menuBar.add(menuItem1);
         menuBar.add(menuItem2);
         menuBar.add(menu1);
-
-        frame.setJMenuBar(menuBar);
-        
-        frame.setIconImage(Theme.appIcon.getImage());
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.cb = new CodeBlockCon(this.stackCodeSize);
         intFrame1.add(cb.getView().getContainer());
@@ -67,9 +60,9 @@ public class PlayGroundView {
         intFrame2.pack();
         intFrame2.setVisible(true);
         intFrame2.setSize(mapV.getDimension());
-        
-        if(intFrame2.getSize().height>600){
-                int divv = (int) Math.ceil(Double.parseDouble("" + intFrame2.getSize().width) / 600);
+
+        if (intFrame2.getSize().height > 600) {
+            int divv = (int) Math.ceil(Double.parseDouble("" + intFrame2.getSize().width) / 600);
             intFrame2.setSize(intFrame1.getSize().width / divv, intFrame2.getSize().height / divv);
         }
 
@@ -83,18 +76,21 @@ public class PlayGroundView {
         mdiConatainer.add(intFrame2);
         mdiConatainer.add(intFrame3);
 
-        int xCenter = (1920-(intFrame1.getSize().width+intFrame2.getSize().width))/4;
-        
+        int xCenter = (1920 - (intFrame1.getSize().width + intFrame2.getSize().width)) / 4;
+
         intFrame2.setLocation(xCenter, topsep);
-        intFrame1.setLocation(intFrame2.getLocation().x+intFrame2.getSize().width, intFrame3.getSize().height+topsep);
-        intFrame3.setLocation(intFrame2.getLocation().x+intFrame2.getSize().width, topsep);
+        intFrame1.setLocation(intFrame2.getLocation().x + intFrame2.getSize().width, intFrame3.getSize().height + topsep);
+        intFrame3.setLocation(intFrame2.getLocation().x + intFrame2.getSize().width, topsep);
         this.cb.setperfecLocationForSubV(intFrame1.getLocation().x, intFrame1.getLocation().y);
 
         mdiConatainer.setVisible(true);
-        frame.add(new Grass());
 
         mdiConatainer.setBackground(Theme.Success);
 
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setJMenuBar(menuBar);
+        frame.setTitle(Theme.appName);
+        frame.setIconImage(Theme.favIcon.getImage());
         frame.add(mdiConatainer);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
@@ -156,7 +152,6 @@ public class PlayGroundView {
     public void setMenu2(JMenu menu2) {
         this.menu2 = menu2;
     }
-
 
     public int[] getCharaterPosition() {
         return charaterPosition;

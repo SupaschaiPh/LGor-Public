@@ -37,6 +37,9 @@ public class Theme {
             NotPassed = new Color(220, 38, 38);
     
     //Font Size
+    
+    public static String appName = "Lกอ";
+    
     public static int Heading = 21,
             SubHeading = 18,
             Normal = 16;
@@ -55,7 +58,8 @@ public class Theme {
     
     public static ImageIcon appIcon = new ImageIcon("image/logo.png"),
             startIcon =  new ImageIcon("image/icon/image1x3.png"),
-            notPassedIcon =  new ImageIcon("image/icon/image3x3.png");
+            notPassedIcon =  new ImageIcon("image/icon/image3x3.png"),
+            favIcon = new ImageIcon("image/favIcon.png");
 
     public Font setAndGetFont() {
         return this.setAndGetFont(Theme.Normal);

@@ -54,6 +54,9 @@ public class AllTitle {
         title.put("Don't Met Cow", "ไม่เจอวัวอ่ะ");//Want to restart?
         title.put("Item not equal request, You got", "ได้ไอเทมไม่ครบตามที่กำหนด, ได้มาแค่");//Want to restart?
         title.put("Met Cow, You passed", "เจอวัวแล้ว, ผ่านได้");//Want to restart?
+        title.put("Start", "เริ่ม");
+        title.put("Tutorial", "ทดลองเล่น");
+        title.put("MyScore", "คะแนนของฉัน");
 
     }
 
