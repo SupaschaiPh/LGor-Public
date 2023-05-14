@@ -4,19 +4,20 @@
  */
 package control;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import view.ProblemSelectView;
 import lgor.LGor;
 import model.Problem;
 import source.SuComponent;
 import source.Theme;
 import view.AllTitle;
+import java.io.*;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,11 +44,12 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
         view.getMitem2().addActionListener(this);
         view.getMitem3().addActionListener(this);
         view.getMitem4().addActionListener(this);
+        view.getMitem5().addActionListener(this);
 
     }
 
     public void renderProblemData() {
-        if (LGor.LGorProblemData!=null && !LGor.LGorProblemData.isEmpty()) {
+        if (LGor.LGorProblemData != null && !LGor.LGorProblemData.isEmpty()) {
             view.getProblemIndex().setText(index + 1 + "");
             curProblem = LGor.LGorProblemData.get(index);
             view.getSolve().setText(AllTitle.title.get("SolveProblem"));
@@ -73,8 +75,8 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (LGor.LGorProblemData==null || LGor.LGorProblemData.isEmpty()) {
-            return ;
+        if (LGor.LGorProblemData == null || LGor.LGorProblemData.isEmpty()) {
+            return;
         }
         if ((index + 1) < LGor.LGorProblemData.size() && e.getSource().equals(view.getRight())) {
             index += 1;
@@ -91,7 +93,7 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
             }
         } else if (e.getSource().equals(this.view.getMitem2())) {
             cpc = new CreateProblemCon();
-            
+
             index = LGor.LGorProblemData.size() - 1;
             Thread t = new Thread(this);
             t.start();
@@ -110,8 +112,23 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
                 Thread t = new Thread(this);
                 t.start();
             }
+        } else if (e.getSource().equals(this.view.getMitem5())) {
+            JFileChooser file = new JFileChooser();
+            file.showOpenDialog(this.view.getFrame());
+            if (file.getSelectedFile() != null && file.getSelectedFile().exists()) {
+                if (file.getSelectedFile().getPath().endsWith(".lgor")) {
+                    try ( FileInputStream fin = new FileInputStream(file.getSelectedFile());  ObjectInputStream oin = new ObjectInputStream(fin);) {
+                        LGor.LGorProblemData.addAll((ArrayList) oin.readObject());
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(file, "Error : "+ex, "JFileChooser", JOptionPane.ERROR_MESSAGE);
+                       
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(file, ".lgor only", "JFileChooser", JOptionPane.WARNING_MESSAGE);
+                }
+            }
         }
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
     }
 
     @Override
@@ -163,9 +180,9 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
 
     @Override
     public void run() {
-        while ((this.pgc != null && this.pgc.getView() != null && this.pgc.getView().getFrame() != null && this.pgc.getView().getFrame().isVisible()) || 
-                (this.cpc != null && this.cpc.getView() != null && this.cpc.getView().getFrame() != null && this.cpc.getView().getFrame().isVisible())||
-                (this.cpc != null && this.cpc.getSubView1() != null && this.cpc.getSubView1().getSubFrame1() != null && this.cpc.getSubView1().getSubFrame1().isVisible())) {
+        while ((this.pgc != null && this.pgc.getView() != null && this.pgc.getView().getFrame() != null && this.pgc.getView().getFrame().isVisible())
+                || (this.cpc != null && this.cpc.getView() != null && this.cpc.getView().getFrame() != null && this.cpc.getView().getFrame().isVisible())
+                || (this.cpc != null && this.cpc.getSubView1() != null && this.cpc.getSubView1().getSubFrame1() != null && this.cpc.getSubView1().getSubFrame1().isVisible())) {
             try {
                 Thread.sleep(200);
             } catch (InterruptedException ex) {
