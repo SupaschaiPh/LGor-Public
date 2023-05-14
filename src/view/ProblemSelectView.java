@@ -34,7 +34,8 @@ public class ProblemSelectView {
     private JMenuItem mitem1 = new SuComponent().getMenuItem("Back"),
             mitem2 = new SuComponent().getMenuItem("AddProblem"),
             mitem3 = new SuComponent().getMenuItem("DeleteProblem"),
-            mitem4 = new SuComponent().getMenuItem("EditProblem");
+            mitem4 = new SuComponent().getMenuItem("EditProblem"),
+            mitem5 = new SuComponent().getMenuItem("AddWithFile");
 
     public ProblemSelectView() {
         this(300, 300, 200, 150);
@@ -45,6 +46,7 @@ public class ProblemSelectView {
         m.add(mitem2);
         m.add(mitem4);
         m.add(mitem3);
+        m.add(mitem5);
 
         mbar.add(mitem1);
         mbar.add(m);
@@ -261,6 +263,14 @@ public class ProblemSelectView {
 
     public void setMitem4(JMenuItem mitem4) {
         this.mitem4 = mitem4;
+    }
+
+    public JMenuItem getMitem5() {
+        return mitem5;
+    }
+
+    public void setMitem5(JMenuItem mitem5) {
+        this.mitem5 = mitem5;
     }
 
 }
