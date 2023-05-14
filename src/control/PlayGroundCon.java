@@ -92,7 +92,7 @@ public class PlayGroundCon implements ActionListener, WindowListener {
     }
 
     public void finished(boolean meetCow,int countMeetItem) {
-        if (this.user != null && meetCow && countMeetItem == pb.getCountMustKeepItem()) {
+        if (this.user != null && meetCow && countMeetItem >= pb.getCountMustKeepItem()) {
             if (this.user.getPassedList() == null) {
                 this.user.setPassedList(new ArrayList());
             }
