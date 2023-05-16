@@ -259,6 +259,7 @@ public class Character extends JPanel implements Runnable {
     }
 
     public void die() {
+        this.setMeetCow(false);
         this.setAlive(false);
         this.mv.changealiveLable();
     }
