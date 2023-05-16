@@ -403,10 +403,13 @@ public class Compiler extends SyntaxChecking implements Runnable {
         int iii = 1;
         if (this.Err) {
             lb.setText("Error : " + this.CheckingErrorRes + AllTitle.title.get("Want to restart?"));
+            this.charr.setMeetCow(false);
             iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
         } else if (!this.charr.isAlive()) {
             String filepath = "fail1.wav";
             playSound(filepath);
+            this.charr.die();
+            this.charr.setMeetCow(false);
             lb.setText(AllTitle.title.get("You Die")+ "!!, "+AllTitle.title.get("Want to restart?"));
             iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
             
