@@ -13,8 +13,7 @@ import java.util.*;
 import javax.swing.*;
 import source.*;
 import view.*;
-import java.io.File;
-import javax.sound.sampled.*;
+import control.Sound;
 
 public class Compiler extends SyntaxChecking implements Runnable {
 
@@ -26,8 +25,7 @@ public class Compiler extends SyntaxChecking implements Runnable {
     private source.Character charr;
     private int limitCompileCode = 10000;
     private int countCompileCode = 0;
-    
-    
+    private Sound sound = new Sound();
 
     public Compiler() {
 
@@ -406,8 +404,9 @@ public class Compiler extends SyntaxChecking implements Runnable {
             this.charr.setMeetCow(false);
             iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
         } else if (!this.charr.isAlive()) {
-            String filepath = "sound/fail1.wav";
-            playSound(filepath);
+            /*String filepath = "sound/fail1.wav";
+            playSound(filepath);*/
+            sound.playSound("sound/fail.wav");
             this.charr.die();
             this.charr.setMeetCow(false);
             lb.setText(AllTitle.title.get("You Die")+ "!!, "+AllTitle.title.get("Want to restart?"));
@@ -415,20 +414,23 @@ public class Compiler extends SyntaxChecking implements Runnable {
             
             
         } else if (!this.charr.isMeetCow()) {
-            String filepath = "sound/fail1.wav"; 
-            playSound(filepath);
+            /*String filepath = "sound/fail1.wav"; 
+            playSound(filepath);*/
+            sound.playSound("sound/fail.wav");
             lb.setText(AllTitle.title.get("Don't Met Cow")+ ", "+AllTitle.title.get("Want to restart?"));
             iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
 
         } else if (this.playGroundCon.getPb().getCountMustKeepItem() > this.charr.getCountItem()) {
-            String filepath = "sound/fail1.wav";
-            playSound(filepath);
+            /*String filepath = "sound/fail1.wav";
+            playSound(filepath);*/
+            sound.playSound("sound/fail.wav");
             lb.setText(AllTitle.title.get("Item not equal request, You got") + this.charr.getCountItem() + "/" + this.playGroundCon.getPb().getCountMustKeepItem() + ", "+AllTitle.title.get("Want to restart?"));
             iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
 
         } else if (this.charr.isMeetCow()) {
-            String filepath = "sound/pass4.wav";
-            playSound(filepath);
+           /* String filepath = "sound/pass4.wav";
+            playSound(filepath);*/
+           sound.playSound("sound/pass.wav");
             lb.setText(AllTitle.title.get("Met Cow, You passed"));
             JOptionPane.showMessageDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.PLAIN_MESSAGE, Theme.startIcon);
         }
@@ -442,21 +444,4 @@ public class Compiler extends SyntaxChecking implements Runnable {
         //this.playGroundCon.getView().getMapV().getContainer().repaint();
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    public static void playSound(String location){
-        try{
-            File musicPath = new File(location);
-            if(musicPath.exists()){
-                AudioInputStream ai = AudioSystem.getAudioInputStream(musicPath);
-                Clip c = AudioSystem.getClip();
-                c.open(ai);
-                c.start();
-            }
-            else{
-                System.out.println("Can't found soundfile");
-            }
-        } catch (Exception e){
-            System.out.println(e);
-        }
-    }
-
 }
