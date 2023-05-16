@@ -23,6 +23,7 @@ public class PlayGroundCon implements ActionListener, WindowListener {
     private int problemIndex;
     private User user;
     private boolean run = false;
+    private Sound sound = new Sound();
 
     public PlayGroundCon() {
         int map[][] = {{1, 2, 2, 3, 2, 1, 2, 0, 0, 0},
@@ -165,6 +166,7 @@ public class PlayGroundCon implements ActionListener, WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
+        sound.playSound("sound/close.wav");
 
         if (this.view.getCb().getCodeBlockSub1Con() != null && this.view.getCb().getCodeBlockSub1Con().getView() != null
                 && this.view.getCb().getCodeBlockSub1Con().getView().getSubFrame1() != null) {

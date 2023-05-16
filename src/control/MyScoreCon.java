@@ -13,6 +13,7 @@ import view.MyScoreView;
  */
 public class MyScoreCon implements WindowListener {
     private MyScoreView view;
+    private Sound sound = new Sound();
     public MyScoreCon(int x, int y, int w, int h) {
         view = new MyScoreView(x,y,w,h);
         view.getFrame().addWindowListener(this);
@@ -35,6 +36,7 @@ public class MyScoreCon implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
+        sound.playSound("sound/close.wav");
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

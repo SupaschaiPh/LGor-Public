@@ -18,6 +18,7 @@ import view.*;
  */
 public class TitleCon implements ActionListener,WindowListener{
     private TitleView view = new TitleView();
+    private Sound sound = new Sound();
     
 
     public TitleCon() {
@@ -31,6 +32,7 @@ public class TitleCon implements ActionListener,WindowListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        sound.playSound("sound/click.wav");
         if(e.getSource().equals(view.getTutorial())){
             Tutorial tt = new Tutorial();
             view.getJf().setVisible(false);
@@ -62,6 +64,7 @@ public class TitleCon implements ActionListener,WindowListener{
 
     @Override
     public void windowClosing(WindowEvent e) {
+        sound.playSound("sound/close.wav");
         LGor.save();
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -90,5 +93,4 @@ public class TitleCon implements ActionListener,WindowListener{
     public void windowDeactivated(WindowEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 }

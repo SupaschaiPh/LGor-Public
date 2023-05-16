@@ -30,6 +30,7 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
     private Problem curProblem;
     private PlayGroundCon pgc;
     private CreateProblemCon cpc;
+    private Sound sound = new Sound();
 
     public ProblemSelectCon(int posx, int posy, int w, int h) {
         view = new ProblemSelectView(posx, posy, w, h);
@@ -77,14 +78,17 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
     public void actionPerformed(ActionEvent e) {
         if (!(LGor.LGorProblemData == null || LGor.LGorProblemData.isEmpty())) {
             if ((index + 1) < LGor.LGorProblemData.size() && e.getSource().equals(view.getRight())) {
+                sound.playSound("sound/arrow.wav");
                 index += 1;
                 renderProblemData();
 
             } else if ((index - 1) >= 0 && e.getSource().equals(view.getLeft())) {
+                sound.playSound("sound/arrow.wav");
                 index -= 1;
                 renderProblemData();
             } else if (e.getSource().equals(this.view.getSolve())) {
                 if (curProblem != null) {
+                    sound.playSound("sound/click.wav");
                     pgc = new PlayGroundCon(index, curProblem, LGor.user);
                     Thread t = new Thread(this);
                     t.start();
@@ -139,7 +143,7 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
 
     @Override
     public void windowClosing(WindowEvent e) {
-
+        sound.playSound("sound/close.wav");
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
