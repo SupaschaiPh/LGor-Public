@@ -191,6 +191,12 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
                 //Logger.getLogger(ProblemSelectCon.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException ex) {
+            System.out.println(ex);
+            //Logger.getLogger(ProblemSelectCon.class.getName()).log(Level.SEVERE, null, ex);
+        }
         renderProblemData();
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
