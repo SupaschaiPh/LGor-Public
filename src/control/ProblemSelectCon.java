@@ -75,23 +75,24 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (LGor.LGorProblemData == null || LGor.LGorProblemData.isEmpty()) {
-            return;
-        }
-        if ((index + 1) < LGor.LGorProblemData.size() && e.getSource().equals(view.getRight())) {
-            index += 1;
-            renderProblemData();
+        if (!(LGor.LGorProblemData == null || LGor.LGorProblemData.isEmpty())) {
+            if ((index + 1) < LGor.LGorProblemData.size() && e.getSource().equals(view.getRight())) {
+                index += 1;
+                renderProblemData();
 
-        } else if ((index - 1) >= 0 && e.getSource().equals(view.getLeft())) {
-            index -= 1;
-            renderProblemData();
-        } else if (e.getSource().equals(this.view.getSolve())) {
-            if (curProblem != null) {
-                pgc = new PlayGroundCon(index, curProblem, LGor.user);
-                Thread t = new Thread(this);
-                t.start();
+            } else if ((index - 1) >= 0 && e.getSource().equals(view.getLeft())) {
+                index -= 1;
+                renderProblemData();
+            } else if (e.getSource().equals(this.view.getSolve())) {
+                if (curProblem != null) {
+                    pgc = new PlayGroundCon(index, curProblem, LGor.user);
+                    Thread t = new Thread(this);
+                    t.start();
+                }
             }
-        } else if (e.getSource().equals(this.view.getMitem2())) {
+        }
+
+        if (e.getSource().equals(this.view.getMitem2())) {
             cpc = new CreateProblemCon();
 
             index = LGor.LGorProblemData.size() - 1;
@@ -120,10 +121,10 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
                     try ( FileInputStream fin = new FileInputStream(file.getSelectedFile());  ObjectInputStream oin = new ObjectInputStream(fin);) {
                         LGor.LGorProblemData.addAll((ArrayList) oin.readObject());
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(file, "Error : "+ex, "JFileChooser", JOptionPane.ERROR_MESSAGE);
-                       
+                        JOptionPane.showMessageDialog(file, "Error : " + ex, "JFileChooser", JOptionPane.ERROR_MESSAGE);
+
                     }
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(file, ".lgor only", "JFileChooser", JOptionPane.WARNING_MESSAGE);
                 }
             }
