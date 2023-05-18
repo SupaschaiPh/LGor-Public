@@ -174,7 +174,6 @@ public class Tutorial implements Runnable {
         boolean loop = true;
         while (loop) {
             try {
-                Thread.sleep(1000);
                 if (this.Ep >= Tutorial.countEp && !playGround.getView().getFrame().isVisible()) {
                     loop = false;
                     javax.swing.JOptionPane.showMessageDialog(null, "End Tutorial");
@@ -187,10 +186,10 @@ public class Tutorial implements Runnable {
                     //System.out.println("Outt");
                     loop = false;
                 }
+                Thread.sleep(4000);
             } catch (Exception ex) {
                 loop = false;
             }
-
         }
         BackFrameBefore.stop = false;
         BackFrameBefore.justBack();
