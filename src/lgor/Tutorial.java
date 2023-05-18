@@ -8,6 +8,7 @@ import control.BackFrameBefore;
 import control.PlayGroundCon;
 import javax.swing.JFrame;
 import model.Problem;
+import source.ElementId;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Tutorial implements Runnable {
 
     private PlayGroundCon playGround;
     private int Ep = 1;
+    private static int countEp = 6;
 
     public Tutorial() {
         playGround = new PlayGroundCon(1, this.t1(), null);
@@ -32,6 +34,10 @@ public class Tutorial implements Runnable {
             return t3();
         } else if (this.Ep == 4) {
             return t4();
+        } else if (this.Ep == 5) {
+            return t5();
+        } else if (this.Ep == 6) {
+            return t6();
         } else {
             return null;
         }
@@ -113,6 +119,46 @@ public class Tutorial implements Runnable {
         int countMustKeepItem = 0;
         return new Problem(name, description, rank, map, charaterStatrPosition, anctionStartOfChar, stackCodeSize, countMustKeepItem, author);
     }
+    public Problem t5() {
+        String name = "Ep 5 : จอนนี่จะเดินขวา";
+        String description = "จอนนี่อยากไปขวาบ้าง"
+                + "\nคำแนะนำ : ให้ใช้คำสั่ง goRight() เพื่อพาจอนนี่เดินไปด้านขวา";
+        int rank = 0;
+        int[][] map = {
+            {0, 1, 0, 1, 0},
+            {1, 1, 1, 1, 1},
+            {0, 0, ElementId.Item, 0, 3},
+            {1, 1, 1, 1, 1},
+            {0, 1, 0, 1, 0},};
+        int charaterStatrPosition[] = {2, 0};
+        int stackCodeSize = 5;
+        String author = "Enfant";
+        String anctionStartOfChar = "waitR";
+        int countMustKeepItem = 1;
+        return new Problem(name, description, rank, map, charaterStatrPosition, anctionStartOfChar, stackCodeSize, countMustKeepItem, author);
+    }
+    public Problem t6() {//for
+        String name = "Ep 6 : จอนนี่จะเดินขวา";
+        String description = "จอนนี่อยากไปขวาบ้าง"
+                + "\nคำแนะนำ : ให้ใช้คำสั่ง goRight() เพื่อพาจอนนี่เดินไปด้านขวา";
+        int rank = 0;
+        int[][] map = {
+            {0, 1, 0, 1, 0},
+            {1, 1, 0, 1, 1},
+            {0, 0, 0, 0, 0},
+            {1, 1, 0, 1, 1},
+            {1, 1, 0, 1, 1},
+            {1, 1, 0, 1, 1},
+            {1, 1, 0, 1, 1},
+            {1, 1, 0, 1, 1},
+            {0, 1, 3, 1, 0},};
+        int charaterStatrPosition[] = {0, 2};
+        int stackCodeSize = 5;
+        String author = "Enfant";
+        String anctionStartOfChar = "waitB";
+        int countMustKeepItem = 0;
+        return new Problem(name, description, rank, map, charaterStatrPosition, anctionStartOfChar, stackCodeSize, countMustKeepItem, author);
+    }
 
 
     @Override
@@ -122,7 +168,7 @@ public class Tutorial implements Runnable {
         while (loop) {
             try {
                 Thread.sleep(1000);
-                if (this.Ep >= 4 && !playGround.getView().getFrame().isVisible()) {
+                if (this.Ep >= Tutorial.countEp && !playGround.getView().getFrame().isVisible()) {
                     loop = false;
                     javax.swing.JOptionPane.showMessageDialog(null, "End Tutorial");
                 } else if ((playGround == null || playGround.getView().getMapV().getCharacter().isMeetCow()) && !playGround.getView().getFrame().isVisible()) {
