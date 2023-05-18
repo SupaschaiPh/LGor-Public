@@ -120,9 +120,9 @@ public class Tutorial implements Runnable {
         return new Problem(name, description, rank, map, charaterStatrPosition, anctionStartOfChar, stackCodeSize, countMustKeepItem, author);
     }
     public Problem t5() {
-        String name = "Ep 5 : จอนนี่จะเดินขวา";
-        String description = "จอนนี่อยากไปขวาบ้าง"
-                + "\nคำแนะนำ : ให้ใช้คำสั่ง goRight() เพื่อพาจอนนี่เดินไปด้านขวา";
+        String name = "Ep 5 : จอนนี่กับกล่องสมบัติ";
+        String description = "ระหว่างทางไปหาแม่วัว มีกล่องสมบัติใบหนึ่งอยู่ข้างหน้าจอนนี่ จอนนี่จึงไม่พลาดที่จะเก็บขึ้นมา"
+                + "\nคำแนะนำ : ให้ใช้คำสั่ง keep() เพื่อทำให้จอนนี่เก็บกล่องสมบัติได้";
         int rank = 0;
         int[][] map = {
             {0, 1, 0, 1, 0},
@@ -137,10 +137,13 @@ public class Tutorial implements Runnable {
         int countMustKeepItem = 1;
         return new Problem(name, description, rank, map, charaterStatrPosition, anctionStartOfChar, stackCodeSize, countMustKeepItem, author);
     }
-    public Problem t6() {//for
-        String name = "Ep 6 : จอนนี่จะเดินขวา";
-        String description = "จอนนี่อยากไปขวาบ้าง"
-                + "\nคำแนะนำ : ให้ใช้คำสั่ง goRight() เพื่อพาจอนนี่เดินไปด้านขวา";
+    public Problem t6() {
+        String name = "Ep 6 : จอนนี่จะ Loop";
+        String description = "จอนนี่อยาก loop บ้าง"
+                + "\nคำแนะนำ :"
+                + "\n1.ให้กดสร้างตัวแปรที่ 'กำหนดเพิ่ม' จากนั้นกด'เพิ่มตัวแปร'"
+                + "\n2.ไปที่ 'กำหนดเพิ่ม' กด 'ดูคำสั่งที่กำหนดเอง' จะปรากฎหน้าต่าง customControl";
+                + "\n3.";
         int rank = 0;
         int[][] map = {
             {0, 1, 0, 1, 0},
