@@ -10,7 +10,7 @@ import view.PlayGroundView;
 import java.util.LinkedList;
 import javax.swing.*;
 import model.*;
-
+import source.Sound;
 /**
  *
  * @author supaschai
@@ -156,12 +156,9 @@ public class PlayGroundCon implements ActionListener, WindowListener {
         
     }
 
-    
 
     @Override
-    public void windowOpened(WindowEvent e) {
-       
-    }
+    public void windowOpened(WindowEvent e) {}
 
     @Override
     public void windowClosing(WindowEvent e) {
@@ -182,27 +179,21 @@ public class PlayGroundCon implements ActionListener, WindowListener {
                 && this.view.getCb().getCodeBlockSub2Con().getSub3().getView().getSubFrame3() != null) {
             this.view.getCb().getCodeBlockSub2Con().getSub3().getView().getSubFrame3().dispose();
         }
-
     }
+    
+    @Override
+    public void windowClosed(WindowEvent e) {}
 
     @Override
-    public void windowClosed(WindowEvent e) {
-    }
+    public void windowIconified(WindowEvent e) {}
 
     @Override
-    public void windowIconified(WindowEvent e) {
-    }
+    public void windowDeiconified(WindowEvent e) {}
 
     @Override
-    public void windowDeiconified(WindowEvent e) {
-    }
+    public void windowActivated(WindowEvent e) {}
 
     @Override
-    public void windowActivated(WindowEvent e) {
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-    }
+    public void windowDeactivated(WindowEvent e) {}
 
 }
