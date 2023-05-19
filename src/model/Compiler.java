@@ -13,7 +13,7 @@ import java.util.*;
 import javax.swing.*;
 import source.*;
 import view.*;
-import control.Sound;
+import source.Sound;
 
 public class Compiler extends SyntaxChecking implements Runnable {
 
@@ -443,6 +443,5 @@ public class Compiler extends SyntaxChecking implements Runnable {
             //System.exit(0);
         }
         //this.playGroundCon.getView().getMapV().getContainer().repaint();
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
