@@ -405,9 +405,7 @@ public class Compiler extends SyntaxChecking implements Runnable {
             this.charr.setMeetCow(false);
             iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
         } else if (!this.charr.isAlive()) {
-            /*String filepath = "sound/fail1.wav";
-            playSound(filepath);*/
-            sound.playSound("sound/fail.wav");
+            sound.playSound(sound.randomFailSound());
             this.charr.die();
             this.charr.setMeetCow(false);
             lb.setText(AllTitle.title.get("You Die")+ "!!, "+AllTitle.title.get("Want to restart?"));
@@ -415,23 +413,17 @@ public class Compiler extends SyntaxChecking implements Runnable {
             
             
         } else if (!this.charr.isMeetCow()) {
-            /*String filepath = "sound/fail1.wav"; 
-            playSound(filepath);*/
-            sound.playSound("sound/fail.wav");
+            sound.playSound(sound.randomFailSound());
             lb.setText(AllTitle.title.get("Don't Met Cow")+ ", "+AllTitle.title.get("Want to restart?"));
             iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
 
         } else if (this.playGroundCon.getPb().getCountMustKeepItem() > this.charr.getCountItem()) {
-            /*String filepath = "sound/fail1.wav";
-            playSound(filepath);*/
-            sound.playSound("sound/fail.wav");
+            sound.playSound(sound.randomFailSound());
             lb.setText(AllTitle.title.get("Item not equal request, You got") + this.charr.getCountItem() + "/" + this.playGroundCon.getPb().getCountMustKeepItem() + ", "+AllTitle.title.get("Want to restart?"));
             iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
 
         } else if (this.charr.isMeetCow()) {
-           /* String filepath = "sound/pass4.wav";
-            playSound(filepath);*/
-           sound.playSound("sound/pass.wav");
+           sound.playSound(sound.randomSucessSound());
             lb.setText(AllTitle.title.get("Met Cow, You passed"));
             JOptionPane.showMessageDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.PLAIN_MESSAGE, Theme.startIcon);
         }
