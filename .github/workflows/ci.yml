@@ -19,6 +19,7 @@ jobs:
           key: ${{ github.ref }}
           path: .cache
       - run: pip install mkdocs-terminal
+      - run: pip install termynal
       - run: ls .
       - run: cd ./document && mkdocs build
       - run: cd ./document && mkdocs gh-deploy --force
