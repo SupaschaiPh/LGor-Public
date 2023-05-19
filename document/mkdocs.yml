@@ -4,9 +4,15 @@ theme:
     - footer.prev_next
 repo_url: https://github.com/SupaschaiPh/LGor-Public/
 site_url: https://supaschaiph.github.io/LGor-Public/
+nav:
+  - Home "index.md"
+  - Usage "วิธีใช้.md"
+  - Download "download.md"
+  - Credit "credit.md"
+  - About:
+    - ClassDiagram "classDiagram.md"
 repo_name: LGor-Public
 site_name: Lกอ
-
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -19,6 +25,5 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-
   - attr_list
   - md_in_html
