@@ -30,7 +30,7 @@ public class CodeBlockCon implements ActionListener {
 
     }
 
-    public void renderStackCode(String inputCommand) {
+    public void renderCodeBox(String inputCommand) {
         if (inputCommand.equals("Del")) {
             view.getStackCode().setValueAt("", view.getPointerPosition(), 0);
             view.getStackCode().setValueAt("", view.getPointerPosition(), 1);
@@ -70,7 +70,7 @@ public class CodeBlockCon implements ActionListener {
         }
     }
 
-    public void renderStackCondition(String inputCondition) {
+    public void renderConditionBox(String inputCondition) {
         if (inputCondition.equals("Del")) {
             view.getStackCode().setValueAt("", view.getPointerPosition(), 1);
 
@@ -159,9 +159,9 @@ public class CodeBlockCon implements ActionListener {
         } else {
             String inputCommand = e.getActionCommand();
             if (((JButton) e.getSource()).getBackground().equals(Theme.Info)) {
-                this.renderStackCode(inputCommand);
+                this.renderCodeBox(inputCommand);
             } else if (((JButton) e.getSource()).getBackground().equals(Theme.Warning)) {
-                this.renderStackCondition(inputCommand);
+                this.renderConditionBox(inputCommand);
             }
 
         }

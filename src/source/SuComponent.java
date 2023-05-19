@@ -6,7 +6,7 @@ package source;
 
 /**
  *
- * @author supaschai Component By Bozzi Supaschai Ph.
+ * @author supaschai Component.
  *
  */
 import java.awt.*;

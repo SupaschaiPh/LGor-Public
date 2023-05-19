@@ -27,7 +27,6 @@ public class CodeBlockSub2Con implements ActionListener {
         } else if (((JButton) e.getSource()).getBackground().equals(Theme.Warning)) {
            sub3 = new CodeBlockSub3Con(view.getCbCon(), e.getActionCommand(), 'b');
         }
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public CodeBlockSub2View getView() {

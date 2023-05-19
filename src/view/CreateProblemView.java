@@ -53,7 +53,6 @@ public class CreateProblemView {
     
     public void init() {
         mapEditor.setQuotaView(quotaView);
-        
         intFrame1.add(mapEditor.getView().getContainer());
         intFrame2.add(problemEditorView.getContainer());
         intFrame3.add(quotaView.getContainer());

@@ -51,10 +51,6 @@ public class Problem implements RenderMapable, UseWithPlayGroundAble, Serializab
         this.rank = rank;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int[][] getMap() {
         int tem[][] = new int[this.map.length][];

@@ -4,20 +4,14 @@
  */
 package control;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import javax.swing.JFileChooser;
-import view.ProblemSelectView;
+import java.awt.event.*;
+import javax.swing.*;
+import view.*;
 import lgor.LGor;
 import model.Problem;
-import source.SuComponent;
-import source.Theme;
-import view.AllTitle;
+import source.*;
 import java.io.*;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -138,41 +132,34 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
 
     @Override
     public void windowOpened(WindowEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
         sound.playSound("sound/close.wav");
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
         BackFrameBefore.back();
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
 
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
 
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public ProblemSelectView getView() {
@@ -192,17 +179,15 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
                 Thread.sleep(200);
             } catch (InterruptedException ex) {
                 System.out.println(ex);
-                //Logger.getLogger(ProblemSelectCon.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         try {
             Thread.sleep(200);
         } catch (InterruptedException ex) {
             System.out.println(ex);
-            //Logger.getLogger(ProblemSelectCon.class.getName()).log(Level.SEVERE, null, ex);
         }
         renderProblemData();
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
     }
 
 }

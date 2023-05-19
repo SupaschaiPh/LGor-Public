@@ -21,12 +21,10 @@ public class PlayGroundView {
     private JMenuBar menuBar = new SuComponent().getMenuBar();
     private JMenu menu1 = new SuComponent().getMenu("|"),
             menu2 = new SuComponent().getMenu(">Restart");
-
     private JMenuItem menuItem1 = new SuComponent().getMenuItem(">Run"),
             menuItem2 = new SuComponent().getMenuItem(">Restart");
-
     private int charaterPosition[];
-    private int stackCodeSize;
+    private int codeBoxSize;
     private String charaterAction;
     private CodeBlockCon cb;
     private MapView mapV;
@@ -35,9 +33,8 @@ public class PlayGroundView {
 
     public PlayGroundView(Problem pb) {
 
-        this.stackCodeSize = pb.getStackCodeSize();
+        this.codeBoxSize = pb.getStackCodeSize();
         this.charaterAction = pb.getAnctionStartOfChar();
-        JPanel tem = new JPanel();
 
         mdiConatainer = new JDesktopPane();
         intFrame1 = new JInternalFrame("Code Block", true, false, true, true);
@@ -48,7 +45,7 @@ public class PlayGroundView {
         menuBar.add(menuItem2);
         menuBar.add(menu1);
 
-        this.cb = new CodeBlockCon(this.stackCodeSize);
+        this.cb = new CodeBlockCon(this.codeBoxSize);
         intFrame1.add(cb.getView().getContainer());
         intFrame1.setMinimumSize(CodeBlockView.getDimension());
         intFrame1.setSize(CodeBlockView.getDimension());
@@ -161,12 +158,12 @@ public class PlayGroundView {
         this.charaterPosition = charaterPosition;
     }
 
-    public int getStackCodeSize() {
-        return stackCodeSize;
+    public int getCodeBoxSize() {
+        return codeBoxSize;
     }
 
-    public void setStackCodeSize(int stackCodeSize) {
-        this.stackCodeSize = stackCodeSize;
+    public void setCodeBoxSize(int codeBoxSize) {
+        this.codeBoxSize = codeBoxSize;
     }
 
     public String getCharaterAction() {

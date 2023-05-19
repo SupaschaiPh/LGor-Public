@@ -21,37 +21,9 @@ public class CodeBlockSub1Con implements ActionListener{
         view.getInput().addActionListener(this);
         view.getSubmit().addActionListener(this);
     }
-
-    public CodeBlockSub1View getView() {
-        return view;
-    }
-
-    public void setView(CodeBlockSub1View view) {
-        this.view = view;
-    }
-
-    public CodeBlockView getCb() {
-        return cb;
-    }
-
-    public void setCb(CodeBlockView cb) {
-        this.cb = cb;
-    }
-
-    public String[] getResitWord() {
-        return resitWord;
-    }
-
-    public void setResitWord(String[] resitWord) {
-        this.resitWord = resitWord;
-    }
-    
-    
     
      @Override
     public void actionPerformed(ActionEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        System.out.println();
         if (cb.getVarableList().indexOf(view.getInput().getText()) >= 0) {
             view.getWarnningText().setText(AllTitle.title.get("This variable was existed")+"!!");
             view.getSubFrame1().pack();
@@ -86,7 +58,30 @@ public class CodeBlockSub1Con implements ActionListener{
             view.getInput().setText("");
             view.getSubFrame1().dispose();
         }
+    }
+    
+    public CodeBlockSub1View getView() {
+        return view;
+    }
 
+    public void setView(CodeBlockSub1View view) {
+        this.view = view;
+    }
+
+    public CodeBlockView getCb() {
+        return cb;
+    }
+
+    public void setCb(CodeBlockView cb) {
+        this.cb = cb;
+    }
+
+    public String[] getResitWord() {
+        return resitWord;
+    }
+
+    public void setResitWord(String[] resitWord) {
+        this.resitWord = resitWord;
     }
     
 }

@@ -22,13 +22,11 @@ public abstract class SyntaxChecking {
         LinkedList StackIf = new LinkedList();
         LinkedList StackElse = new LinkedList();
         LinkedList varList = new LinkedList();
-        int countIf = 0;
         Object commandlistArray[] = commandlist.toArray();
         for (int i = 0; i < commandlistArray.length; i++) {
             String curCommand = (String) commandlistArray[i];
             if (curCommand.startsWith("if")) {
                 StackIf.add(1);
-                countIf += 1;
             } else if (curCommand.equals("end if")) {
                 if (StackIf.isEmpty()) {
                     Err = true;

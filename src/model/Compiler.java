@@ -105,30 +105,7 @@ public class Compiler extends SyntaxChecking implements Runnable {
             System.out.println(exp);
         }
     }
-
-    public synchronized void setCharrAction(String cAction, boolean alive) {
-        this.charr.walk(cAction + "2");
-        delay();
-        if (map[charPosition[0]][charPosition[1]] == ElementId.Item) {
-            this.charr.setMeetItem(true);
-        } else {
-            this.charr.setMeetItem(false);
-        }
-        this.charr.setAlive(alive);
-        this.playGroundCon.getView().getMapV().renderMap(charPosition);
-        this.playGroundCon.getView().getMapV().getContainer().revalidate();
-        this.charr.walk(cAction);
-        delay();
-        this.playGroundCon.getView().getMapV().changealiveLable();
-
-    }
-
-    public void setCharrAction(String cAction) {
-        this.charr.repaint();
-        this.setCharrAction(cAction, true);
-
-    }
-
+    
     public void compile(LinkedList<String> commandList) {
         this.compile(commandList, 0);
     }
@@ -320,6 +297,30 @@ public class Compiler extends SyntaxChecking implements Runnable {
             System.out.println(exp);
         }
     }
+    
+    public synchronized void setCharrAction(String cAction, boolean alive) {
+        this.charr.walk(cAction + "2");
+        delay();
+        if (map[charPosition[0]][charPosition[1]] == ElementId.Item) {
+            this.charr.setMeetItem(true);
+        } else {
+            this.charr.setMeetItem(false);
+        }
+        this.charr.setAlive(alive);
+        this.playGroundCon.getView().getMapV().renderMap(charPosition);
+        this.playGroundCon.getView().getMapV().getContainer().revalidate();
+        this.charr.walk(cAction);
+        delay();
+        this.playGroundCon.getView().getMapV().changealiveLable();
+
+    }
+
+    public void setCharrAction(String cAction) {
+        this.charr.repaint();
+        this.setCharrAction(cAction, true);
+
+    }
+
     
     public int[][] getMap() {
         return map;

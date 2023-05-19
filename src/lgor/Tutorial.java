@@ -6,7 +6,6 @@ package lgor;
 
 import control.BackFrameBefore;
 import control.PlayGroundCon;
-import javax.swing.JFrame;
 import model.Problem;
 import source.ElementId;
 
@@ -170,7 +169,6 @@ public class Tutorial implements Runnable {
 
     @Override
     public void run() {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         boolean loop = true;
         while (loop) {
             try {

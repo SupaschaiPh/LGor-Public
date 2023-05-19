@@ -20,22 +20,18 @@ public class CreateProblemCon implements ActionListener {
     private CreateProblemView view;
     private CreateProblemViewSub1View subView1;
     private int problemIndex = -1;
-
     public CreateProblemCon() {
         subView1 = new CreateProblemViewSub1View();
         subView1.getOk().addActionListener(this);
     }
-
     public CreateProblemCon(Problem pb, int problemIndex) {
         view = new CreateProblemView(pb);
         this.problemIndex = problemIndex;
         this.view.getMapEditor().renderQuoataView();
         this.view.getProblemEditorView().getButton().addActionListener(this);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         if (subView1 != null && e.getSource().equals(subView1.getOk())) {
             try {
                 Integer.parseInt(subView1.getRows().getText());

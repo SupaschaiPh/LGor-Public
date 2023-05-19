@@ -19,9 +19,6 @@ public class LGor {
     public static ArrayList<Problem> LGorProblemData;
     public static User user;
     public static String curPath = "";
-    /**
-     * @param args the command line arguments
-     */
     private TitleCon titleCon;
 
     public LGor() {

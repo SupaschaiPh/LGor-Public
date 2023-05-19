@@ -47,7 +47,6 @@ public class PlayGroundCon implements ActionListener, WindowListener {
     public PlayGroundCon(int problemIndex, UseWithPlayGroundAble pb, UserAdapter user) {
         this.setPlayGroundCon(problemIndex, pb, user);
         this.reset();
-
     }
 
     public void reset() {
@@ -68,7 +67,17 @@ public class PlayGroundCon implements ActionListener, WindowListener {
         this.user = (User) user;
     }
 
-    public PlayGroundView getView() {
+    public void finished(boolean meetCow, int countMeetItem) {
+        if (this.user != null && meetCow && countMeetItem >= pb.getCountMustKeepItem()) {
+            if (this.user.getPassedList() == null) {
+                this.user.setPassedList(new ArrayList());
+            }
+            this.user.addPassed(problemIndex);
+        }
+        this.view.getFrame().dispose();
+    }
+    
+     public PlayGroundView getView() {
         return view;
     }
 
@@ -91,20 +100,32 @@ public class PlayGroundCon implements ActionListener, WindowListener {
     public void setPb(UseWithPlayGroundAble pb) {
         this.pb = (Problem) pb;
     }
-
-    public void finished(boolean meetCow,int countMeetItem) {
-        if (this.user != null && meetCow && countMeetItem >= pb.getCountMustKeepItem()) {
-            if (this.user.getPassedList() == null) {
-                this.user.setPassedList(new ArrayList());
-            }
-            this.user.addPassed(problemIndex);
-        }
-        this.view.getFrame().dispose();
+    public int getProblemIndex() {
+        return problemIndex;
     }
 
+    public void setProblemIndex(int problemIndex) {
+        this.problemIndex = problemIndex;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public boolean isRun() {
+        return run;
+    }
+
+    public void setRun(boolean run) {
+        this.run = run;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        //System.out.println(e);
         if (this.run && e.getSource().equals(this.view.getMenuItem1())) {
 
         } else if (e.getSource().equals(this.view.getMenuItem1())) {
@@ -132,36 +153,14 @@ public class PlayGroundCon implements ActionListener, WindowListener {
         } else if (e.getSource().equals(this.view.getMenuItem2())) {
             this.reset();
         }
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
-    public int getProblemIndex() {
-        return problemIndex;
-    }
-
-    public void setProblemIndex(int problemIndex) {
-        this.problemIndex = problemIndex;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public boolean isRun() {
-        return run;
-    }
-
-    public void setRun(boolean run) {
-        this.run = run;
-    }
+    
 
     @Override
     public void windowOpened(WindowEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
     }
 
     @Override
@@ -183,32 +182,27 @@ public class PlayGroundCon implements ActionListener, WindowListener {
                 && this.view.getCb().getCodeBlockSub2Con().getSub3().getView().getSubFrame3() != null) {
             this.view.getCb().getCodeBlockSub2Con().getSub3().getView().getSubFrame3().dispose();
         }
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
-        ////throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

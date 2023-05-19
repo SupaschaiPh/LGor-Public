@@ -28,9 +28,9 @@ public class CodeBlockSub3Con implements ActionListener {
 
     private void render(String ic) {
         if (this.type == 'a') {
-            this.cb.renderStackCode(ic);
+            this.cb.renderCodeBox(ic);
         } else if (this.type == 'b') {
-            this.cb.renderStackCondition(ic);
+            this.cb.renderConditionBox(ic);
         }
     }
 
@@ -60,8 +60,6 @@ public class CodeBlockSub3Con implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-
         try {
             int inputData = Integer.parseInt(this.view.getInput().getText());
             this.view.getWarnningText().setText("");

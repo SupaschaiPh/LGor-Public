@@ -68,7 +68,7 @@ public class Character extends JPanel implements Runnable {
     private boolean meetCow = false;
     private boolean alive = true, meetItem = false;
     private int step = 10;
-    private int sep = 20;
+    private int sep = 25;
     private int divForCalculateMapBolck = 3;
 
     public Character() {
@@ -111,6 +111,72 @@ public class Character extends JPanel implements Runnable {
 
         g2d.fillRect(0, 0, this.getSize().width, this.getSize().height);
 
+    }
+    
+    public void walk(String action) {
+        stillWalking = true;
+        if (action.equals(AllTitle.commandList[0].replace("()", ""))) {
+            //this.action = "waitG";
+            this.action = "go";
+            this.y = this.getSize().height / divForCalculateMapBolck;
+        } else if (action.equals(AllTitle.commandList[1].replace("()", ""))) {
+            //this.action = "waitB";
+            this.action = "goDown";
+            this.y = -this.getSize().height / divForCalculateMapBolck;
+        } else if (action.equals(AllTitle.commandList[2].replace("()", ""))) {
+            //this.action = "waitL";
+            this.action = "goLeft";
+            this.x = this.getSize().width / divForCalculateMapBolck;
+        } else if (action.equals(AllTitle.commandList[3].replace("()", ""))) {
+            //this.action = "waitR";
+            this.action = "goRight";
+            this.x = -this.getSize().width / divForCalculateMapBolck;
+        } else if (action.equals(AllTitle.commandList[0].replace("()", "2"))) {
+            this.action = "go2";
+            this.y = 0;
+        } else if (action.equals(AllTitle.commandList[1].replace("()", "2"))) {
+            this.action = "goDown2";
+            this.y = 0;
+        } else if (action.equals(AllTitle.commandList[2].replace("()", "2"))) {
+            this.action = "goLeft2";
+            this.x = 0;
+        } else if (action.equals(AllTitle.commandList[3].replace("()", "2"))) {
+            this.action = "goRight2";
+            this.x = 0;
+        }
+    }
+
+    public void keep() {
+        if (mv.getMap()[mv.getCharaterPosition()[0]][mv.getCharaterPosition()[1]] == ElementId.Item) {
+            this.countItem += 1;
+            mv.setMapAt(mv.getCharaterPosition()[0], mv.getCharaterPosition()[1], 0);
+            mv.changeCountItem();
+            this.setMeetItem(false);
+            this.repaint();
+        }
+    }
+
+    public boolean isMeetCow() {
+        return meetCow;
+    }
+
+    public void setMeetCow(boolean meetCow) {
+        this.meetCow = meetCow;
+    }
+
+    public void meetCow() {
+        this.meetCow = meetCow;
+        if (mv.getMap()[mv.getCharaterPosition()[0]][mv.getCharaterPosition()[1]] == ElementId.Cow) {
+            this.setMeetCow(true);
+        } else {
+            this.setMeetCow(false);
+        }
+    }
+
+    public void die() {
+        this.setMeetCow(false);
+        this.setAlive(false);
+        this.mv.changealiveLable();
     }
 
     public static HashMap<String, Image> getCharTile() {
@@ -196,74 +262,7 @@ public class Character extends JPanel implements Runnable {
     public void setStep(int step) {
         this.step = step;
     }
-
-
-    public void walk(String action) {
-        stillWalking = true;
-        if (action.equals(AllTitle.commandList[0].replace("()", ""))) {
-            //this.action = "waitG";
-            this.action = "go";
-            this.y = this.getSize().height / divForCalculateMapBolck;
-        } else if (action.equals(AllTitle.commandList[1].replace("()", ""))) {
-            //this.action = "waitB";
-            this.action = "goDown";
-            this.y = -this.getSize().height / divForCalculateMapBolck;
-        } else if (action.equals(AllTitle.commandList[2].replace("()", ""))) {
-            //this.action = "waitL";
-            this.action = "goLeft";
-            this.x = this.getSize().width / divForCalculateMapBolck;
-        } else if (action.equals(AllTitle.commandList[3].replace("()", ""))) {
-            //this.action = "waitR";
-            this.action = "goRight";
-            this.x = -this.getSize().width / divForCalculateMapBolck;
-        } else if (action.equals(AllTitle.commandList[0].replace("()", "2"))) {
-            this.action = "go2";
-            this.y = 0;
-        } else if (action.equals(AllTitle.commandList[1].replace("()", "2"))) {
-            this.action = "goDown2";
-            this.y = 0;
-        } else if (action.equals(AllTitle.commandList[2].replace("()", "2"))) {
-            this.action = "goLeft2";
-            this.x = 0;
-        } else if (action.equals(AllTitle.commandList[3].replace("()", "2"))) {
-            this.action = "goRight2";
-            this.x = 0;
-        }
-    }
-
-    public void keep() {
-        if (mv.getMap()[mv.getCharaterPosition()[0]][mv.getCharaterPosition()[1]] == ElementId.Item) {
-            this.countItem += 1;
-            mv.setMapAt(mv.getCharaterPosition()[0], mv.getCharaterPosition()[1], 0);
-            mv.changeCountItem();
-            this.setMeetItem(false);
-            this.repaint();
-        }
-    }
-
-    public boolean isMeetCow() {
-        return meetCow;
-    }
-
-    public void setMeetCow(boolean meetCow) {
-        this.meetCow = meetCow;
-    }
-
-    public void meetCow() {
-        this.meetCow = meetCow;
-        if (mv.getMap()[mv.getCharaterPosition()[0]][mv.getCharaterPosition()[1]] == ElementId.Cow) {
-            this.setMeetCow(true);
-        } else {
-            this.setMeetCow(false);
-        }
-    }
-
-    public void die() {
-        this.setMeetCow(false);
-        this.setAlive(false);
-        this.mv.changealiveLable();
-    }
-
+    
     @Override
     public void run() {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
