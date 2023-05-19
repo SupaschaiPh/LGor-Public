@@ -24,7 +24,7 @@ public class TitleView {
             tutorial = new SuComponent().getButton(AllTitle.title.get("Tutorial")),
             myScore = new SuComponent().getButton(AllTitle.title.get("MyScore"));
     private Logo logo = new Logo();
-    private int scw, sch, cenh, cenw, px, py;
+    private int scw, sch, px, py;
 
     public TitleView() {
         jp.add(logo);
@@ -51,10 +51,8 @@ public class TitleView {
         Dimension di = frame.getToolkit().getScreenSize();
         scw = di.width;
         sch = di.height;
-        cenh = sch/2;
-        cenw = scw/2;
-        px = cenw - frame.getWidth()/2;
-        py = cenh - frame.getHeight()/2;
+        px = (scw/2) - frame.getWidth()/2;
+        py = (sch/2) - frame.getHeight()/2;
         frame.setLocation(px, py);
         frame.setVisible(true);
 
