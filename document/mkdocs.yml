@@ -2,6 +2,8 @@ theme:
   name: terminal
   features:
     - footer.prev_next
+    - revision.date
+    - revision.history
 repo_url: https://github.com/SupaschaiPh/LGor-Public/
 site_url: https://supaschaiph.github.io/LGor-Public/
 nav:
