@@ -6,6 +6,7 @@ theme:
     - revision.history
 repo_url: https://github.com/SupaschaiPh/LGor-Public/
 site_url: https://supaschaiph.github.io/LGor-Public/
+edit_uri_template: https://github.com/SupaschaiPh/LGor-Public/edit/main/document/docs/{path}
 nav:
   - Home: "index.md"
   - Usage: "วิธีใช้.md"
