@@ -22,6 +22,7 @@ public class Sound {
                 Clip c = AudioSystem.getClip();
                 c.open(ai);
                 c.start();
+                ai.close();
             }
             else{
                 System.out.println("Can't found soundfile");
