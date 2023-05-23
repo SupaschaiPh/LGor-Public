@@ -92,8 +92,9 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
 
         if (e.getSource().equals(this.view.getMitem2())) {
             cpc = new CreateProblemCon();
-
-            index = LGor.LGorProblemData.size() - 1;
+            if(LGor.LGorProblemData.size() > 0){
+                index = LGor.LGorProblemData.size() - 1;
+            }
             Thread t = new Thread(this);
             t.start();
         } else if (e.getSource().equals(this.view.getMitem1())) {
@@ -102,9 +103,12 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
             if (!LGor.LGorProblemData.isEmpty()) {
                 LGor.LGorProblemData.remove(index);
                 LGor.user.getPassedList().remove(index + "");
-                index -= 1;
+                if (LGor.LGorProblemData.size()-1 < index){
+                    index -= 1;
+                }
                 renderProblemData();
             }
+            
         } else if (e.getSource().equals(this.view.getMitem4())) {
             if (!LGor.LGorProblemData.isEmpty()) {
                 cpc = new CreateProblemCon(LGor.LGorProblemData.get(index), index);
