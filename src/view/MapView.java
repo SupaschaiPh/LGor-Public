@@ -13,7 +13,6 @@ import source.*;
  * @author supaschai
  */
 public class MapView implements BeAbleWorkInMDI {
-
     private JPanel container = new JPanel();//new SuComponent().getPanel();
     //girdTableCt = new  SuComponent().getPanel() ;
     private static Dimension dimensionperGridBox = new Dimension(40, 40);
@@ -27,51 +26,6 @@ public class MapView implements BeAbleWorkInMDI {
             statusPanel = new SuComponent().getPanel();
     private JLabel countItem = new SuComponent().getLabel(AllTitle.title.get("CountItem") + " : 0", 11),
             aliveLable = new SuComponent().getLabel(AllTitle.title.get("Alive") + " : " + AllTitle.title.get("Alivetrue"), 11);
-    public synchronized void renderMap(int[] charaterPosition) {
-        System.out.println("Rendermap");
-        this.charaterPosition = charaterPosition;
-        //if(this.girdTableCt!=null)
-        this.container.removeAll();
-        this.girdTableCt.removeAll();
-        this.girdTableCt.setOpaque(true);
-        //JPanel girdTableCt = new JPanel();
-        girdTableCt.setLayout(new GridLayout(this.map.length, this.map[0].length));
-        
-
-        for (int row = 0; row < this.map.length; row++) {
-            for (int col = 0; col < this.map[row].length; col++) {
-                JPanel jp = new Grass();
-                JPanel topJp = jp;
-                jp.setBorder(Theme.Border);
-                if (this.charaterPosition[0] == row && this.charaterPosition[1] == col) {
-                    topJp.add(character);
-                }
-                if (this.map[row][col] == 1) {
-                    JPanel b = new Barrier();
-                    topJp.add(b);
-                    topJp = b;
-
-                } else if (this.map[row][col] == 2) {
-                    JPanel item = new Item();
-                    topJp.add(item);
-                    topJp = item;
-                } else if (this.map[row][col] == 3) {
-                    Cow c = new Cow();
-                    Thread t = new Thread(c);
-                    topJp.add(c);
-                    t.start();
-                }
-
-                girdTableCt.add(jp);
-            }
-
-            container.add(new SuComponent().getBorderPanel(girdTableCt));
-            container.add(statusPanel, BorderLayout.NORTH);
-            //container.revalidate();
-
-        }
-    }
-
     public MapView(int[][] map, int[] charaterPosition, String charAction) {
         Thread tChar = new Thread(character);
         tChar.start();
@@ -90,7 +44,45 @@ public class MapView implements BeAbleWorkInMDI {
         //int size = (map.length*map[0].length)*dimensionperGridBox.height;
         this.dimension = new Dimension(map[0].length * dimensionperGridBox.width, map.length * dimensionperGridBox.height + 50);
     }
+    public synchronized void renderMap(int[] charaterPosition) {
+        System.out.println("Rendermap");
+        this.charaterPosition = charaterPosition;
+        //if(this.girdTableCt!=null)
+        this.container.removeAll();
+        this.girdTableCt.removeAll();
+        this.girdTableCt.setOpaque(true);
+        //JPanel girdTableCt = new JPanel();
+        girdTableCt.setLayout(new GridLayout(this.map.length, this.map[0].length));
+        
+        for (int row = 0; row < this.map.length; row++) {
+            for (int col = 0; col < this.map[row].length; col++) {
+                JPanel jp = new Grass();
+                JPanel topJp = jp;
+                jp.setBorder(Theme.Border);
+                if (this.charaterPosition[0] == row && this.charaterPosition[1] == col) {
+                    topJp.add(character);
+                }
+                if (this.map[row][col] == ElementId.Barrier) {
+                    JPanel b = new Barrier();
+                    topJp.add(b);
+                    topJp = b;
 
+                } else if (this.map[row][col] == ElementId.Item) {
+                    JPanel item = new Item();
+                    topJp.add(item);
+                    topJp = item;
+                } else if (this.map[row][col] == ElementId.Cow) {
+                    Cow c = new Cow();
+                    Thread t = new Thread(c);
+                    topJp.add(c);
+                    t.start();
+                }
+                girdTableCt.add(jp);
+            }
+            container.add(new SuComponent().getBorderPanel(girdTableCt));
+            container.add(statusPanel, BorderLayout.NORTH);
+        }
+    }
     public void changeCountItem() {
         countItem.setText(AllTitle.title.get("CountItem") + " : " + this.character.getCountItem());
     }
@@ -102,20 +94,9 @@ public class MapView implements BeAbleWorkInMDI {
     @Override
     public JPanel getContainer() {
         return this.container;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public Dimension getDimension() {
-        /*if (dimension.height >= maximumDimension.height || dimension.width >= maximumDimension.width) {
-            this.setDimension(new Dimension(dimension.width / 2, dimension.height / 2));
-        }*/
-        if (dimension.width < 300) {
-            int i = 300/dimension.width;
-            this.setDimension(new Dimension(dimension.width*i, dimension.height*i));
-        }else if (dimension.height < 300) {
-            int i = 300/dimension.height;
-            this.setDimension(new Dimension(dimension.width, dimension.height*i));
-        }
         return dimension;
     }
 
@@ -198,7 +179,4 @@ public class MapView implements BeAbleWorkInMDI {
     public void setAliveLable(JLabel aliveLable) {
         this.aliveLable = aliveLable;
     }
-
-    
-
 }
