@@ -79,10 +79,7 @@ public class SuComponent {
     }
     
     public JPanel getBorderPanel(int margin) {
-        panel.setBackground(Theme.BG);
-        panel.setForeground(Theme.FG);
-        panel.setOpaque(true);
-        panel.setLayout(new BorderLayout());
+        this.getBorderPanel();
         panel.setBorder(new EmptyBorder(margin, margin, margin, margin));
         return panel;
     }
@@ -137,10 +134,7 @@ public class SuComponent {
     }
 
     public JPanel getPanel(Object obj) {
-        panel.setBackground(Theme.BG);
-        panel.setForeground(Theme.FG);
-        panel.setOpaque(true);
-        panel.setAutoscrolls(true);
+        this.getPanel();
         panel.add((Component) obj);
         return panel;
     }
@@ -154,10 +148,7 @@ public class SuComponent {
     }
 
     public JPanel getTransparentPanel(Object obj) {
-        panel.setBackground(Theme.Transparent);
-        panel.setForeground(Theme.FG);
-        panel.setOpaque(true);
-        panel.setAutoscrolls(true);
+        this.getTransparentPanel();
         panel.add((Component) obj);
         return panel;
     }
