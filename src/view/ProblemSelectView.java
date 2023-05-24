@@ -15,12 +15,12 @@ import source.*;
 public class ProblemSelectView {
 
     private JFrame frame = new JFrame();
-    private JPanel container = new SuComponent().getPanel(),
-            problemData = new SuComponent().getPanel(),
-            container2 = new SuComponent().getPanel(),
-            container3 = new SuComponent().getPanel(),
-            container4 = new SuComponent().getPanel(),
-            buttonContainer = new SuComponent().getPanel(),
+    private JPanel container = new BgImg(2),
+            problemData = new SuComponent().getTransparentPanel(),
+            container2 = new SuComponent().getTransparentPanel(),
+            container3 = new SuComponent().getTransparentPanel(),
+            container4 = new SuComponent().getTransparentPanel(),
+            buttonContainer = new SuComponent().getTransparentPanel(),
             rank = new SuComponent().getPanel(new SuComponent().renderBadgeRank(0));
     private JLabel title = new SuComponent().getLabel(AllTitle.title.get("Problem")),
             problemIndex = new SuComponent().getLabel("1", 67),
@@ -42,7 +42,7 @@ public class ProblemSelectView {
     }
 
     public ProblemSelectView(int posx, int posy, int w, int h) {
-
+        
         m.add(mitem2);
         m.add(mitem4);
         m.add(mitem3);
@@ -69,24 +69,26 @@ public class ProblemSelectView {
         problemData.add(problemIndex);
         problemData.add(container2, BorderLayout.SOUTH);
 
-        container3.add(new SuComponent().getBorderPanel(40), BorderLayout.WEST);
+        container3.add(new SuComponent().getTransparentBorderPanel(40), BorderLayout.WEST);
         container3.add(problemData);
-        container3.add(new SuComponent().getBorderPanel(40), BorderLayout.EAST);
+        container3.add(new SuComponent().getTransparentBorderPanel(40), BorderLayout.EAST);
 
         left.setPreferredSize(new Dimension(50, 30));
         right.setPreferredSize(new Dimension(50, 30));
         solve.setPreferredSize(new Dimension(250, 30));
         solve.setBackground(Theme.FG);
         solve.setForeground(Theme.BG);
-        buttonContainer.add(new SuComponent().getPanel(left));
+        buttonContainer.add(new SuComponent().getTransparentPanel(left));
         buttonContainer.add(solve);
-        buttonContainer.add(new SuComponent().getPanel(right));
+        buttonContainer.add(new SuComponent().getTransparentPanel(right));
 
-        container4.add(new SuComponent().getBorderPanel(container3));
+        container4.add(new SuComponent().getTransparentBorderPanel(container3));
         container4.add(buttonContainer, BorderLayout.SOUTH);
 
-        container.add(new SuComponent().getBorderPanel(container4, 30));
+        container.add(new SuComponent().getTransparentBorderPanel(container4, 30));
+        container.setBorder(Theme.EEmptyBorder);
 
+        container.setBackground(Color.red);
         frame.setTitle(Theme.appName);
         frame.setIconImage(Theme.favIcon.getImage());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
