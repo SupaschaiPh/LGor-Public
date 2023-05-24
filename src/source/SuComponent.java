@@ -77,27 +77,22 @@ public class SuComponent {
         panel.add((Component) obj);
         return panel;
     }
-
-    public JPanel getBorderPanel(Object obj, int margin) {
-        panel.setBackground(Theme.BG);
-        panel.setForeground(Theme.FG);
-        panel.setOpaque(true);
-        panel.setBorder(Theme.EEmptyBorder);
-        panel.setLayout(new BorderLayout());
-        panel.add((Component) obj);
-        panel.setBorder(new EmptyBorder(margin, margin, margin, margin));
-        return panel;
-    }
-
+    
     public JPanel getBorderPanel(int margin) {
         panel.setBackground(Theme.BG);
         panel.setForeground(Theme.FG);
         panel.setOpaque(true);
-        panel.setBorder(Theme.EEmptyBorder);
         panel.setLayout(new BorderLayout());
         panel.setBorder(new EmptyBorder(margin, margin, margin, margin));
         return panel;
     }
+    
+    public JPanel getBorderPanel(Object obj, int margin) {
+        this.getBorderPanel(margin);
+        return panel;
+    }
+
+    
 
     public JPanel getBorderPanel() {
         panel.setBackground(Theme.BG);
@@ -106,7 +101,33 @@ public class SuComponent {
         panel.setLayout(new BorderLayout());
         return panel;
     }
+    
+     public JPanel getTransparentBorderPanel(Object obj){
+        panel.setBackground(Theme.Transparent);
+        panel.setForeground(Theme.FG);
+        panel.setOpaque(true);
+        panel.setBorder(Theme.EEmptyBorder);
+        panel.setLayout(new BorderLayout());
+        panel.add((Component) obj);
+        return panel;
+    }
+    
+    public JPanel getTransparentBorderPanel(int margin){
+        panel.setBackground(Theme.Transparent);
+        panel.setForeground(Theme.FG);
+        panel.setOpaque(true);
+        panel.setLayout(new BorderLayout());
+        panel.setBorder(new EmptyBorder(margin, margin, margin, margin));
+        return panel;
+    }
 
+    public JPanel getTransparentBorderPanel(Object obj, int margin){
+        this.getTransparentBorderPanel(margin);
+        panel.add((Component) obj);
+        return panel;
+    }
+    
+    
     public JPanel getPanel() {
         panel.setBackground(Theme.BG);
         panel.setForeground(Theme.FG);
@@ -353,7 +374,6 @@ public class SuComponent {
         slider.setPaintTrack(true);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
-
         return slider;
     }
 

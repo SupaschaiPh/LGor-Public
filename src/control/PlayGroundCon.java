@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import javax.swing.*;
 import model.*;
 import source.Sound;
+
 /**
  *
  * @author supaschai
@@ -23,6 +24,7 @@ public class PlayGroundCon implements ActionListener, WindowListener {
     private int problemIndex;
     private User user;
     private boolean run = false;
+    private Thread tCompiler;
     private Sound sound = new Sound();
 
     public PlayGroundCon() {
@@ -54,7 +56,13 @@ public class PlayGroundCon implements ActionListener, WindowListener {
         if (this.view != null) {
             view.getFrame().dispose();
         }
+        //เจตนาให้Thread die
         this.view = null;
+        if (tCompiler != null) {
+            while (tCompiler.isAlive()) {
+
+            }
+        }
         view = new PlayGroundView(pb);
         this.view.getFrame().addWindowListener(this);
         this.view.getMenuItem1().addActionListener(this);
@@ -76,8 +84,8 @@ public class PlayGroundCon implements ActionListener, WindowListener {
         }
         this.view.getFrame().dispose();
     }
-    
-     public PlayGroundView getView() {
+
+    public PlayGroundView getView() {
         return view;
     }
 
@@ -100,6 +108,7 @@ public class PlayGroundCon implements ActionListener, WindowListener {
     public void setPb(UseWithPlayGroundAble pb) {
         this.pb = (Problem) pb;
     }
+
     public int getProblemIndex() {
         return problemIndex;
     }
@@ -123,7 +132,7 @@ public class PlayGroundCon implements ActionListener, WindowListener {
     public void setRun(boolean run) {
         this.run = run;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (this.run && e.getSource().equals(this.view.getMenuItem1())) {
@@ -140,25 +149,24 @@ public class PlayGroundCon implements ActionListener, WindowListener {
                 }
                 this.code.add((codeTb.getValueAt(i, 0) + "" + codeTb.getValueAt(i, 1)).strip());
             }
-            //this.getview().getFrame().setEnabled(false);
 
             model.Compiler com = new model.Compiler(this);
             LinkedList<String> commandList = (LinkedList) this.code.clone();
             com.setCommandList(commandList);
-            Thread t = new Thread(com);
-            t.start();
+            tCompiler = new Thread(com);
+            tCompiler.start();
 
             this.code.clear();
 
         } else if (e.getSource().equals(this.view.getMenuItem2())) {
             this.reset();
         }
-        
+
     }
 
-
     @Override
-    public void windowOpened(WindowEvent e) {}
+    public void windowOpened(WindowEvent e) {
+    }
 
     @Override
     public void windowClosing(WindowEvent e) {
@@ -180,20 +188,25 @@ public class PlayGroundCon implements ActionListener, WindowListener {
             this.view.getCb().getCodeBlockSub2Con().getSub3().getView().getSubFrame3().dispose();
         }
     }
-    
-    @Override
-    public void windowClosed(WindowEvent e) {}
 
     @Override
-    public void windowIconified(WindowEvent e) {}
+    public void windowClosed(WindowEvent e) {
+    }
 
     @Override
-    public void windowDeiconified(WindowEvent e) {}
+    public void windowIconified(WindowEvent e) {
+    }
 
     @Override
-    public void windowActivated(WindowEvent e) {}
+    public void windowDeiconified(WindowEvent e) {
+    }
 
     @Override
-    public void windowDeactivated(WindowEvent e) {}
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+    }
 
 }
