@@ -28,7 +28,6 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
 
     public ProblemSelectCon(int posx, int posy, int w, int h) {
         view = new ProblemSelectView(posx, posy, w, h);
-
         renderProblemData();
 
         view.getFrame().addWindowListener(this);
@@ -102,6 +101,7 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
         } else if (e.getSource().equals(this.view.getMitem3())) {
             if (!LGor.LGorProblemData.isEmpty()) {
                 LGor.LGorProblemData.remove(index);
+                LGor.user.delPassed(index);
                 LGor.user.getPassedList().remove(index + "");
                 if (LGor.LGorProblemData.size()-1 < index){
                     index -= 1;

@@ -37,15 +37,22 @@ public class User extends UserAdapter implements Serializable {
     @Override
     public void addPassed(int problemIndex) {
         if(!this.isPassed(problemIndex)){
-            this.passedList.add(problemIndex);
+            this.passedList.add(problemIndex+"");
         }
         
     }
+    @Override
+    public void delPassed(int problemIndex) {
+        if(this.isPassed(problemIndex)){
+            this.passedList.remove(problemIndex+"");
+        }
+    }
      @Override
     public boolean isPassed(int problemIndex) {
-        
-        return this.passedList.indexOf(problemIndex) != -1;
+       
+        return this.passedList.indexOf(problemIndex+"") != -1;
 
     }
+    
     
 }

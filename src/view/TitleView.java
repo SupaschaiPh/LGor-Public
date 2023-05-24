@@ -17,9 +17,9 @@ import source.*;
 public class TitleView {
 
     private JFrame frame = new JFrame();
-    private JPanel jp = new SuComponent().getPanel(),
-            jp2 = new SuComponent().getPanel(),
-            jp3 = new SuComponent().getPanel();
+    private JPanel jp = new SuComponent().getTransparentPanel(),
+            jp2 = new SuComponent().getTransparentPanel(),
+            jp3 = new BgImg();
     private JButton start = new SuComponent().getButton(AllTitle.title.get("Start")),
             tutorial = new SuComponent().getButton(AllTitle.title.get("Tutorial")),
             myScore = new SuComponent().getButton(AllTitle.title.get("MyScore"));
@@ -27,16 +27,16 @@ public class TitleView {
     private int scw, sch, px, py;
 
     public TitleView() {
-        jp.add(logo);
+        //jp.add(logo);
         logo.setPreferredSize(new Dimension(257, 147));
 
         jp2.setLayout(new GridLayout(5, 1));
         start.setPreferredSize(new Dimension(300, 25));
         tutorial.setPreferredSize(new Dimension(300, 25));
         myScore.setPreferredSize(new Dimension(300, 25));
-        jp2.add(new SuComponent().getPanel(start));
-        jp2.add(new SuComponent().getPanel(tutorial));
-        jp2.add(new SuComponent().getPanel(myScore));
+        jp2.add(new SuComponent().getTransparentPanel(start));
+        jp2.add(new SuComponent().getTransparentPanel(tutorial));
+        jp2.add(new SuComponent().getTransparentPanel(myScore));
         start.setBackground(Theme.FG);
         start.setForeground(Theme.BG);
 
@@ -51,9 +51,10 @@ public class TitleView {
         Dimension di = frame.getToolkit().getScreenSize();
         scw = di.width;
         sch = di.height;
-        px = (scw/2) - frame.getWidth()/2;
-        py = (sch/2) - frame.getHeight()/2;
+        px = (scw / 2) - frame.getWidth() / 2;
+        py = (sch / 2) - frame.getHeight() / 2;
         frame.setLocation(px, py);
+        frame.setResizable(false);
         frame.setVisible(true);
 
     }

@@ -37,37 +37,38 @@ public class CodeBlockCon implements ActionListener {
 
         } else {
             view.getStackCode().setValueAt(inputCommand, view.getPointerPosition(), 0);
-            int indent = 0;
-            for (int i = 0; i < view.getStackCode().getRowCount(); i++) {
-                String command = (String) view.getStackCode().getValueAt(i, 0);
-                if (command == null) {
-                    continue;
-                }
+        }
+        int indent = 0;
+        for (int i = 0; i < view.getStackCode().getRowCount(); i++) {
+            String command = (String) view.getStackCode().getValueAt(i, 0);
+            if (command == null) {
+                continue;
+            }
+            command = command.strip();
+            for (int x = 0; x < indent; x++) {
+                command = "  " + command;
+            }
+            if (command.strip().equals("if->")
+                    || command.strip().equals("else")
+                    || command.strip().equals("for->")) {
+                indent += 1;
+            } else if (command.strip().equals("end if")
+                    || command.strip().equals("end else")
+                    || command.strip().equals("end for")) {
+                indent -= 1;
                 command = command.strip();
                 for (int x = 0; x < indent; x++) {
                     command = "  " + command;
                 }
-                if (command.strip().equals("if->")
-                        || command.strip().equals("else")
-                        || command.strip().equals("for->")) {
-                    indent += 1;
-                } else if (command.strip().equals("end if")
-                        || command.strip().equals("end else")
-                        || command.strip().equals("end for")) {
-                    indent -= 1;
-                    command = command.strip();
-                    for (int x = 0; x < indent; x++) {
-                        command = "  " + command;
-                    }
-                }
-                view.getStackCode().setValueAt(command, i, 0);
-                if (!((command != null) && (command.strip().equals("if->") || command.strip().equals("for->")))) {
-                    view.getStackCode().setValueAt("", i, 1);
-
-                }
             }
-            indent = 0;
+            view.getStackCode().setValueAt(command, i, 0);
+            if (!((command != null) && (command.strip().equals("if->") || command.strip().equals("for->")))) {
+                view.getStackCode().setValueAt("", i, 1);
+
+            }
         }
+        indent = 0;
+
     }
 
     public void renderConditionBox(String inputCondition) {
@@ -83,7 +84,7 @@ public class CodeBlockCon implements ActionListener {
             }
             String command = (String) view.getStackCode().getValueAt(view.getPointerPosition(), 0);
             command = command.strip();
-            if (command.indexOf("->")!=-1) {
+            if (command.indexOf("->") != -1) {
                 view.getStackCode().setValueAt(inputCondition, view.getPointerPosition(), 1);
             } else {
                 JLabel lb = new SuComponent().getLabel((String) AllTitle.title.get("Condition Only Use with [if, for]"));
@@ -105,7 +106,6 @@ public class CodeBlockCon implements ActionListener {
             view.setPointerPosition(view.getPointerPosition() + move);
         }
         view.getStackCode().setValueAt("<--", view.getPointerPosition(), 2);
-        //Animation.Wiggle.setStackCode( view.getStackCode());
         Animation.Wiggle.setPointerPosition(view.getPointerPosition());
     }
 
@@ -119,7 +119,6 @@ public class CodeBlockCon implements ActionListener {
             view.setPointerPosition(move);
         }
         view.getStackCode().setValueAt("<--", view.getPointerPosition(), 2);
-        //Animation.Wiggle.setStackCode( view.getStackCode());
         Animation.Wiggle.setPointerPosition(view.getPointerPosition());
     }
 
@@ -147,12 +146,10 @@ public class CodeBlockCon implements ActionListener {
 
             }
         } else if (e.getSource().equals(view.getPointDown())) {
-
             //ทำให้pointer เลื่อนขึ้นไปด้านบน
             this.movePointer(1);
 
         } else if (e.getSource().equals(view.getPointUp())) {
-
             //ทำให้pointer เลื่อนลงไปด้านล่าง
             this.movePointer(-1);
 

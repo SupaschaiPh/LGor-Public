@@ -68,14 +68,12 @@ public class ProblemView implements BeAbleWorkInMDI {
         container2.add(container3, BorderLayout.SOUTH);
         borderPanel.add(container2);
         container.add(borderPanel);
-        // container.add(null, BorderLayout.SOUTH);
 
     }
 
     @Override
     public JPanel getContainer() {
         return this.container;
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

@@ -12,8 +12,6 @@ import java.util.ArrayList;
  */
 public abstract class UserAdapter implements Useable {
 
-    
-
     @Override
     public ArrayList getPassedList() {
         System.out.println("Disable Now");
@@ -52,7 +50,6 @@ public abstract class UserAdapter implements Useable {
         System.out.println("Disable Now");
     }
 
-    
     @Override
     public boolean isPassed(int problemIndex) {
         System.out.println("Disable Now");
@@ -64,5 +61,10 @@ public abstract class UserAdapter implements Useable {
     public int getPassedList(int index) {
         System.out.println("Disable Now");
         return 0;
+    }
+
+    @Override
+    public void delPassed(int problemIndex) {
+        System.out.println("Disable Now");
     }
 }

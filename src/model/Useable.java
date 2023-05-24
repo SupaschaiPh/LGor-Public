@@ -16,9 +16,8 @@ public interface Useable {
 
     public abstract void setUserId(String id);
 
-
     public abstract ArrayList getPassedList();
-    
+
     public abstract int getPassedList(int index);
 
     public abstract int getCountPassed();
@@ -28,7 +27,9 @@ public interface Useable {
     public abstract void setCountPassed(int countPassed);
 
     public abstract void addPassed(int problemIndex);
-    
+
+    public abstract void delPassed(int problemIndex);
+
     public abstract boolean isPassed(int problemIndex);
 
 }

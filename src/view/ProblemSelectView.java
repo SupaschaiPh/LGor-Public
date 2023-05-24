@@ -94,6 +94,7 @@ public class ProblemSelectView {
         frame.setJMenuBar(mbar);
         frame.add(container);
         frame.setSize(w, h);
+        frame.setResizable(false);
         frame.setVisible(true);
     }
 

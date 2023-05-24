@@ -32,13 +32,13 @@ public class SuComponent {
     private JTable table = new JTable();
     private JSlider slider = new JSlider();
 
-    public String trans(String str){
-        if(AllTitle.title.get(str)!=null){
+    public String trans(String str) {
+        if (AllTitle.title.get(str) != null) {
             str = AllTitle.title.get(str);
         }
         return str;
     }
-    
+
     public JDesktopPane getMDI() {
         MDI.setBackground(Theme.BG);
         MDI.setForeground(Theme.FG);
@@ -50,7 +50,7 @@ public class SuComponent {
     }
 
     public JInternalFrame getInternalFrame(String title) {
-        
+
         internalFrame.setTitle(this.trans(title));
         internalFrame.setClosable(false);
         internalFrame.setResizable(true);
@@ -77,15 +77,15 @@ public class SuComponent {
         panel.add((Component) obj);
         return panel;
     }
-    
-    public JPanel getBorderPanel(Object obj,int margin) {
+
+    public JPanel getBorderPanel(Object obj, int margin) {
         panel.setBackground(Theme.BG);
         panel.setForeground(Theme.FG);
         panel.setOpaque(true);
         panel.setBorder(Theme.EEmptyBorder);
         panel.setLayout(new BorderLayout());
         panel.add((Component) obj);
-        panel.setBorder(new EmptyBorder(margin,margin,margin,margin));
+        panel.setBorder(new EmptyBorder(margin, margin, margin, margin));
         return panel;
     }
 
@@ -95,7 +95,7 @@ public class SuComponent {
         panel.setOpaque(true);
         panel.setBorder(Theme.EEmptyBorder);
         panel.setLayout(new BorderLayout());
-        panel.setBorder(new EmptyBorder(margin,margin,margin,margin));
+        panel.setBorder(new EmptyBorder(margin, margin, margin, margin));
         return panel;
     }
 
@@ -124,6 +124,23 @@ public class SuComponent {
         return panel;
     }
 
+    public JPanel getTransparentPanel() {
+        panel.setBackground(Theme.Transparent);
+        panel.setForeground(Theme.FG);
+        panel.setOpaque(true);
+        panel.setAutoscrolls(true);
+        return panel;
+    }
+
+    public JPanel getTransparentPanel(Object obj) {
+        panel.setBackground(Theme.Transparent);
+        panel.setForeground(Theme.FG);
+        panel.setOpaque(true);
+        panel.setAutoscrolls(true);
+        panel.add((Component) obj);
+        return panel;
+    }
+
     public JLabel getLabel() {
         return this.getLabel(Theme.Normal);
     }
@@ -134,14 +151,20 @@ public class SuComponent {
         return lb;
     }
 
-    public JLabel getLabel(String text, int fontsize) {
+    public JLabel getLabel(String text, int fontsize, Color fgColor) {
         label.setFont(new Theme().setAndGetFont(fontsize));
         label.setBackground(Theme.BG);
-        label.setForeground(Theme.FG);
+        label.setForeground(fgColor);
         label.setVerticalAlignment(JLabel.TOP);
         label.setVerticalTextPosition(JLabel.TOP);
         label.setOpaque(true);
         label.setText(this.trans(text));
+        return label;
+
+    }
+
+    public JLabel getLabel(String text, int fontsize) {
+        this.getLabel(text,fontsize,Theme.FG);
         return label;
     }
 
