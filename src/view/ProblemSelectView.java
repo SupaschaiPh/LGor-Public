@@ -88,7 +88,6 @@ public class ProblemSelectView {
         container.add(new SuComponent().getTransparentBorderPanel(container4, 30));
         container.setBorder(Theme.EEmptyBorder);
 
-        container.setBackground(Color.red);
         frame.setTitle(Theme.appName);
         frame.setIconImage(Theme.favIcon.getImage());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

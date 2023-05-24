@@ -60,9 +60,20 @@ public class PlayGroundCon implements ActionListener, WindowListener {
         this.view = null;
         if (tCompiler != null) {
             while (tCompiler.isAlive()) {
-
             }
         }
+        
+        view = new PlayGroundView(pb);
+        this.view.getFrame().addWindowListener(this);
+        this.view.getMenuItem1().addActionListener(this);
+        this.view.getMenuItem2().addActionListener(this);
+    }
+    public void justReset(){
+        this.run = false;
+        if (this.view != null) {
+            view.getFrame().dispose();
+        }
+        this.view = null;
         view = new PlayGroundView(pb);
         this.view.getFrame().addWindowListener(this);
         this.view.getMenuItem1().addActionListener(this);
