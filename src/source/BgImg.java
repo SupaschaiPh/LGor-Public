@@ -20,6 +20,8 @@ public class BgImg extends JPanel {
 
     Image img = new ImageIcon("image/LGorBG.png").getImage();
     Image img2 = new ImageIcon("image/LGorBGNight.png").getImage();
+    Image img3 = new ImageIcon("image/LGorBGDay.png").getImage();
+
     private int bgType = 0;
 
     public BgImg(LayoutManager layout, boolean isDoubleBuffered) {
@@ -54,6 +56,8 @@ public class BgImg extends JPanel {
             g2d.drawImage(img, 0, 0, this.getSize().width, this.getSize().height, this);
         } else if (this.bgType == 1) {
             g2d.drawImage(img2, 0, 0, this.getSize().width, this.getSize().height, this);
+        } else if (this.bgType == 2) {
+            g2d.drawImage(img3, 0, 0, this.getSize().width, this.getSize().height, this);
         }
     }
 
@@ -76,6 +80,5 @@ public class BgImg extends JPanel {
     public void setBgType(int bgType) {
         this.bgType = bgType;
     }
-    
-    
+
 }
