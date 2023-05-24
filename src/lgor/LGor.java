@@ -35,7 +35,7 @@ public class LGor {
             user = new User();
             System.out.println(e);
         }
-        try ( FileInputStream f = new FileInputStream("data/map.lgor");  ObjectInputStream oin = new ObjectInputStream(f)) {
+        try ( FileInputStream f = new FileInputStream("data/problems.lgor");  ObjectInputStream oin = new ObjectInputStream(f)) {
             LGorProblemData = (ArrayList) oin.readObject();
             //System.out.println(LGorProblemData);
         } catch (Exception e) {
@@ -54,7 +54,7 @@ public class LGor {
         } catch (Exception ex) {
             System.out.println(ex);
         }
-        try ( FileOutputStream f = new FileOutputStream("data/map.lgor");  ObjectOutputStream o = new ObjectOutputStream(f)) {
+        try ( FileOutputStream f = new FileOutputStream("data/problems.lgor");  ObjectOutputStream o = new ObjectOutputStream(f)) {
             o.writeObject(LGor.LGorProblemData);
             o.flush();
         } catch (Exception ex) {
