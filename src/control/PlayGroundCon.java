@@ -50,6 +50,7 @@ public class PlayGroundCon implements ActionListener, WindowListener {
     }
 
     public void reset() {
+        this.run = false;
         if (this.view != null) {
             view.getFrame().dispose();
         }
@@ -58,7 +59,6 @@ public class PlayGroundCon implements ActionListener, WindowListener {
         this.view.getFrame().addWindowListener(this);
         this.view.getMenuItem1().addActionListener(this);
         this.view.getMenuItem2().addActionListener(this);
-        this.run = false;
     }
 
     public void setPlayGroundCon(int problemIndex, UseWithPlayGroundAble pb, UserAdapter user) {
