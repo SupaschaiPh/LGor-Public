@@ -105,14 +105,14 @@ public class Compiler extends SyntaxChecking implements Runnable {
             System.out.println(exp);
         }
     }
-    
+
     public void compile(LinkedList<String> commandList) {
         this.compile(commandList, 0);
     }
 
     public synchronized void compile(LinkedList<String> commandList, int pointer) {
         try {
-            if(!this.playGroundCon.isRun()){
+            if (!this.playGroundCon.isRun()) {
                 throw new Exception("Running Stoped");
             }
             if (this.Err) {
@@ -279,7 +279,7 @@ public class Compiler extends SyntaxChecking implements Runnable {
                     conditionOfFor = runningCommand.split("->")[1].strip();
                 }
                 if (countFor == 0 && !qFor.isEmpty() && runningCommand.equals("end for")) {
-                    while (true) {
+                    while (true && this.playGroundCon.isRun()) {
                         if (checkCondition(conditionOfFor)) {
                             compile(qFor, pointer - qFor.size() - 1);
                             if (this.playGroundCon != null && this.playGroundCon.getView() != null
@@ -297,7 +297,7 @@ public class Compiler extends SyntaxChecking implements Runnable {
             System.out.println(exp);
         }
     }
-    
+
     public synchronized void setCharrAction(String cAction, boolean alive) {
         this.charr.walk(cAction + "2");
         delay();
@@ -321,7 +321,6 @@ public class Compiler extends SyntaxChecking implements Runnable {
 
     }
 
-    
     public int[][] getMap() {
         return map;
     }
@@ -386,7 +385,6 @@ public class Compiler extends SyntaxChecking implements Runnable {
         this.countCompileCode = countCompileCode;
     }
 
-
     @Override
     public void run() {
         System.out.println("Compiling....");
@@ -400,39 +398,40 @@ public class Compiler extends SyntaxChecking implements Runnable {
         JLabel lb = new SuComponent().getLabel();
         lb.setBackground(Theme.Transparent);
         int iii = 1;
-        if (this.Err) {
-            lb.setText("Error : " + this.CheckingErrorRes + AllTitle.title.get("Want to restart?"));
-            this.charr.setMeetCow(false);
-            iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
-        } else if (!this.charr.isAlive()) {
-            sound.playSound(sound.randomFailSound());
-            this.charr.die();
-            this.charr.setMeetCow(false);
-            lb.setText(AllTitle.title.get("You Die")+ "!!, "+AllTitle.title.get("Want to restart?"));
-            iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
-            
-            
-        } else if (!this.charr.isMeetCow()) {
-            sound.playSound(sound.randomFailSound());
-            lb.setText(AllTitle.title.get("Don't Met Cow")+ ", "+AllTitle.title.get("Want to restart?"));
-            iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
+        if (this.getPlayGroundCon().isRun()) {
+            if (this.Err) {
+                lb.setText("Error : " + this.CheckingErrorRes + AllTitle.title.get("Want to restart?"));
+                this.charr.setMeetCow(false);
+                iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+            } else if (!this.charr.isAlive()) {
+                sound.playSound(sound.randomFailSound());
+                this.charr.die();
+                this.charr.setMeetCow(false);
+                lb.setText(AllTitle.title.get("You Die") + "!!, " + AllTitle.title.get("Want to restart?"));
+                iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
 
-        } else if (this.playGroundCon.getPb().getCountMustKeepItem() > this.charr.getCountItem()) {
-            sound.playSound(sound.randomFailSound());
-            lb.setText(AllTitle.title.get("Item not equal request, You got") + this.charr.getCountItem() + "/" + this.playGroundCon.getPb().getCountMustKeepItem() + ", "+AllTitle.title.get("Want to restart?"));
-            iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
+            } else if (!this.charr.isMeetCow()) {
+                sound.playSound(sound.randomFailSound());
+                lb.setText(AllTitle.title.get("Don't Met Cow") + ", " + AllTitle.title.get("Want to restart?"));
+                iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
 
-        } else if (this.charr.isMeetCow()) {
-           sound.playSound(sound.randomSucessSound());
-            lb.setText(AllTitle.title.get("Met Cow, You passed"));
-            JOptionPane.showMessageDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.PLAIN_MESSAGE, Theme.startIcon);
-        }
+            } else if (this.playGroundCon.getPb().getCountMustKeepItem() > this.charr.getCountItem()) {
+                sound.playSound(sound.randomFailSound());
+                lb.setText(AllTitle.title.get("Item not equal request, You got") + this.charr.getCountItem() + "/" + this.playGroundCon.getPb().getCountMustKeepItem() + ", " + AllTitle.title.get("Want to restart?"));
+                iii = JOptionPane.showConfirmDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, Theme.notPassedIcon);
 
-        if (iii == 0) {
-            this.playGroundCon.reset();
-        } else {
-            this.playGroundCon.finished(this.charr.isMeetCow(),this.charr.getCountItem());
-            //System.exit(0);
+            } else if (this.charr.isMeetCow()) {
+                sound.playSound(sound.randomSucessSound());
+                lb.setText(AllTitle.title.get("Met Cow, You passed"));
+                JOptionPane.showMessageDialog(this.playGroundCon.getView().getFrame(), lb, "Compiler", JOptionPane.PLAIN_MESSAGE, Theme.startIcon);
+            }
+
+            if (iii == 0) {
+                this.playGroundCon.reset();
+            } else {
+                this.playGroundCon.finished(this.charr.isMeetCow(), this.charr.getCountItem());
+                //System.exit(0);
+            }
         }
         //this.playGroundCon.getView().getMapV().getContainer().repaint();
     }
