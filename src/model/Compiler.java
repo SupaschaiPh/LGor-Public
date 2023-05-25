@@ -427,10 +427,9 @@ public class Compiler extends SyntaxChecking implements Runnable {
             }
 
             if (iii == 0) {
-                this.playGroundCon.reset();
+                this.playGroundCon.justReset();
             } else {
                 this.playGroundCon.finished(this.charr.isMeetCow(), this.charr.getCountItem());
-                //System.exit(0);
             }
         }
         //this.playGroundCon.getView().getMapV().getContainer().repaint();

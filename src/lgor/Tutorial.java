@@ -20,26 +20,29 @@ public class Tutorial implements Runnable {
     private static int countEp = 6;
 
     public Tutorial() {
-        playGround = new PlayGroundCon(1, this.t1(), null);
+        playGround = new PlayGroundCon(this);
 
     }
 
     public Problem returnStory() {
+        Problem result;
         if (this.Ep == 1) {
-            return t1();
+            result = t1();
         } else if (this.Ep == 2) {
-            return t2();
+            result = t2();
         } else if (this.Ep == 3) {
-            return t3();
+            result = t3();
         } else if (this.Ep == 4) {
-            return t4();
+            result = t4();
         } else if (this.Ep == 5) {
-            return t5();
+            result = t5();
         } else if (this.Ep == 6) {
-            return t6();
+            result = t6();
         } else {
-            return null;
+            result = null;
         }
+        this.Ep += 1;
+        return result;
     }
 
     public Problem t1() {
@@ -118,6 +121,7 @@ public class Tutorial implements Runnable {
         int countMustKeepItem = 0;
         return new Problem(name, description, rank, map, charaterStatrPosition, anctionStartOfChar, stackCodeSize, countMustKeepItem, author);
     }
+
     public Problem t5() {
         String name = "Ep 5 : จอนนี่กับกล่องสมบัติ";
         String description = "ระหว่างทางไปหาแม่วัว มีกล่องสมบัติใบหนึ่งอยู่ข้างหน้าจอนนี่ จอนนี่จึงไม่พลาดที่จะเก็บขึ้นมา"
@@ -136,6 +140,7 @@ public class Tutorial implements Runnable {
         int countMustKeepItem = 1;
         return new Problem(name, description, rank, map, charaterStatrPosition, anctionStartOfChar, stackCodeSize, countMustKeepItem, author);
     }
+
     public Problem t6() {
         String name = "Ep 6 : จอนนี่จะ Loop";
         String description = "จอนนี่อยากใช้ loop บ้าง เดินธรรมดามันไม่เท่!!"
@@ -166,26 +171,27 @@ public class Tutorial implements Runnable {
         return new Problem(name, description, rank, map, charaterStatrPosition, anctionStartOfChar, stackCodeSize, countMustKeepItem, author);
     }
 
-
     @Override
     public void run() {
         boolean loop = true;
         while (loop) {
             try {
-                if (this.Ep >= Tutorial.countEp && !playGround.getView().getFrame().isVisible()) {
-                    loop = false;
-                    javax.swing.JOptionPane.showMessageDialog(null, "End Tutorial");
-                } else if ((playGround == null || playGround.getView().getMapV().getCharacter().isMeetCow()) && !playGround.getView().getFrame().isVisible()) {
-                    //Thread.sleep(2000);
-                    this.playGround.getView().getFrame().dispose();
-                    this.Ep += 1;
-                    this.playGround = new PlayGroundCon(Ep, this.returnStory(), null);
-                } else if (playGround == null || (!playGround.getView().getMapV().getCharacter().isMeetCow() && !playGround.getView().getFrame().isVisible())) {
-                    //System.out.println("Outt");
-                    loop = false;
+                Thread.sleep(1);
+
+                if (playGround.getView().getFrame() == null || !playGround.getView().getFrame().isVisible()) {
+                    Thread.sleep(1000);
+                    if (this.Ep > Tutorial.countEp + 1 && (playGround.getView().getFrame() == null || !playGround.getView().getFrame().isVisible())) {
+                        loop = false;
+                        javax.swing.JOptionPane.showMessageDialog(null, "End Tutorial");
+                    }
+                    else if (playGround.getView().getFrame() == null || !playGround.getView().getFrame().isVisible()) {
+                        loop = false;
+                    }
+
                 }
-                Thread.sleep(4000);
+
             } catch (Exception ex) {
+                System.out.println(ex);
                 loop = false;
             }
         }

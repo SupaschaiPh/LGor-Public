@@ -316,7 +316,6 @@ public class Character extends JPanel implements Runnable {
                     } else {
                         this.y -= this.step;
                     }
-                    System.out.println(y);
                     Thread.sleep(speed);
                     this.setCurTile("back3");
                     this.repaint();

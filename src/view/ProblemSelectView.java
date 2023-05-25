@@ -92,7 +92,7 @@ public class ProblemSelectView {
         frame.setIconImage(Theme.favIcon.getImage());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocation(posx, posy);
-        //frame.setJMenuBar(mbar);
+        frame.setJMenuBar(mbar);
         frame.add(container);
         frame.setSize(w, h);
         frame.setResizable(false);

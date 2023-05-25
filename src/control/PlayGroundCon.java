@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import view.PlayGroundView;
 import java.util.LinkedList;
 import javax.swing.*;
+import lgor.Tutorial;
 import model.*;
 import source.Sound;
 
@@ -22,6 +23,7 @@ public class PlayGroundCon implements ActionListener, WindowListener {
     private LinkedList<String> code = new LinkedList();
     private Problem pb;
     private int problemIndex;
+    private Tutorial tutorial;
     private User user;
     private boolean run = false;
     private Thread tCompiler;
@@ -46,6 +48,13 @@ public class PlayGroundCon implements ActionListener, WindowListener {
 
     }
 
+    public PlayGroundCon(Tutorial tutorial) {
+        this.tutorial = tutorial;
+        this.pb = this.tutorial.returnStory();
+        this.reset();
+
+    }
+
     public PlayGroundCon(int problemIndex, UseWithPlayGroundAble pb, UserAdapter user) {
         this.setPlayGroundCon(problemIndex, pb, user);
         this.reset();
@@ -60,29 +69,56 @@ public class PlayGroundCon implements ActionListener, WindowListener {
         this.view = null;
         if (tCompiler != null) {
             while (tCompiler.isAlive()) {
-
             }
         }
+
         view = new PlayGroundView(pb);
         this.view.getFrame().addWindowListener(this);
         this.view.getMenuItem1().addActionListener(this);
         this.view.getMenuItem2().addActionListener(this);
     }
 
+    public void justReset() {
+        this.run = false;
+        if (this.view != null) {
+            view.getFrame().dispose();
+        }
+        this.view = null;
+        view = new PlayGroundView(pb);
+        this.view.getFrame().addWindowListener(this);
+        this.view.getMenuItem1().addActionListener(this);
+        this.view.getMenuItem2().addActionListener(this);
+    }
+
+    public void finished(boolean meetCow, int countMeetItem) {
+        if (this.user != null) {
+            if (meetCow && countMeetItem >= pb.getCountMustKeepItem()) {
+                if (this.user.getPassedList() == null) {
+                    this.user.setPassedList(new ArrayList());
+                }
+                this.user.addPassed(problemIndex);
+            }
+            this.view.getFrame().dispose();
+        }
+        if (this.tutorial != null) {
+            if (meetCow && countMeetItem >= pb.getCountMustKeepItem()) {
+                this.pb = this.tutorial.returnStory();
+                if (this.pb != null) {
+                    this.justReset();
+                } else {
+                    this.view.getFrame().dispose();
+                }
+            } else {
+                this.view.getFrame().dispose();
+
+            }
+        }
+    }
+
     public void setPlayGroundCon(int problemIndex, UseWithPlayGroundAble pb, UserAdapter user) {
         this.problemIndex = problemIndex;
         this.pb = (Problem) pb;
         this.user = (User) user;
-    }
-
-    public void finished(boolean meetCow, int countMeetItem) {
-        if (this.user != null && meetCow && countMeetItem >= pb.getCountMustKeepItem()) {
-            if (this.user.getPassedList() == null) {
-                this.user.setPassedList(new ArrayList());
-            }
-            this.user.addPassed(problemIndex);
-        }
-        this.view.getFrame().dispose();
     }
 
     public PlayGroundView getView() {

@@ -45,7 +45,6 @@ public class MapView implements BeAbleWorkInMDI {
         this.dimension = new Dimension(map[0].length * dimensionperGridBox.width, map.length * dimensionperGridBox.height + 50);
     }
     public synchronized void renderMap(int[] charaterPosition) {
-        System.out.println("Rendermap");
         this.charaterPosition = charaterPosition;
         //if(this.girdTableCt!=null)
         this.container.removeAll();
