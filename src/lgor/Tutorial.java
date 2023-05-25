@@ -181,10 +181,9 @@ public class Tutorial implements Runnable {
                 if (playGround.getView().getFrame() == null || !playGround.getView().getFrame().isVisible()) {
                     Thread.sleep(1000);
                     if (this.Ep > Tutorial.countEp + 1 && (playGround.getView().getFrame() == null || !playGround.getView().getFrame().isVisible())) {
-                        loop = false;
                         javax.swing.JOptionPane.showMessageDialog(null, "End Tutorial");
-                    }
-                    else if (playGround.getView().getFrame() == null || !playGround.getView().getFrame().isVisible()) {
+                        loop = false;
+                    } else if (playGround.getView().getFrame() == null || !playGround.getView().getFrame().isVisible()) {
                         loop = false;
                     }
 

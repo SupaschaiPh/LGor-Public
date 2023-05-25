@@ -13,6 +13,7 @@ import source.*;
 import java.io.*;
 import java.util.ArrayList;
 import source.Sound;
+
 /**
  *
  * @author supaschai
@@ -43,6 +44,9 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
     }
 
     public void renderProblemData() {
+        if (LGor.LGorProblemData.size() == 0) {
+            index = -1;
+        }
         if (LGor.LGorProblemData != null && !LGor.LGorProblemData.isEmpty()) {
             view.getProblemIndex().setText(index + 1 + "");
             curProblem = LGor.LGorProblemData.get(index);
@@ -91,7 +95,7 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
 
         if (e.getSource().equals(this.view.getMitem2())) {
             cpc = new CreateProblemCon();
-            if(LGor.LGorProblemData.size() > 0){
+            if (LGor.LGorProblemData.size() > 0) {
                 index = LGor.LGorProblemData.size() - 1;
             }
             Thread t = new Thread(this);
@@ -101,14 +105,27 @@ public class ProblemSelectCon implements ActionListener, WindowListener, Runnabl
         } else if (e.getSource().equals(this.view.getMitem3())) {
             if (!LGor.LGorProblemData.isEmpty()) {
                 LGor.LGorProblemData.remove(index);
-                LGor.user.delPassed(index);
-                LGor.user.getPassedList().remove(index + "");
-                if (LGor.LGorProblemData.size()-1 < index){
+                if (index < LGor.LGorProblemData.size()) {
+                    for (int i = index; i <= LGor.LGorProblemData.size(); i++) {
+                        if (LGor.user.isPassed(i) && i != index) {
+                            LGor.user.delPassed(i);
+                            LGor.user.addPassed(i - 1);
+                        } else if (i == index) {
+                            LGor.user.delPassed(i);
+
+                        }
+
+                    }
+                } else {
+                    LGor.user.delPassed(index);
+
+                }
+                if (LGor.LGorProblemData.size() - 1 < index) {
                     index -= 1;
                 }
                 renderProblemData();
             }
-            
+
         } else if (e.getSource().equals(this.view.getMitem4())) {
             if (!LGor.LGorProblemData.isEmpty()) {
                 cpc = new CreateProblemCon(LGor.LGorProblemData.get(index), index);

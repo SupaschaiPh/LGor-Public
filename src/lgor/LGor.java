@@ -26,11 +26,10 @@ public class LGor {
         titleCon = new TitleCon();
     }
 
-    public static void open(){
+    public static void open() {
         try ( FileInputStream f = new FileInputStream("data/user.lgor");  ObjectInputStream oin = new ObjectInputStream(f)) {
             user = (User) oin.readObject();
             //System.out.println(user.getPassedList());
-
         } catch (Exception e) {
             user = new User();
             System.out.println(e);
@@ -44,8 +43,8 @@ public class LGor {
         }
 
     }
-    
-    public static void save(){
+
+    public static void save() {
         File ff = new File("data");
         ff.mkdir();
         try ( FileOutputStream f = new FileOutputStream("data/user.lgor");  ObjectOutputStream o = new ObjectOutputStream(f)) {
@@ -86,8 +85,6 @@ public class LGor {
     public void setTitleCon(TitleCon titleCon) {
         this.titleCon = titleCon;
     }
-    
-   
 
     public static void main(String[] args) {
         try {
@@ -98,21 +95,18 @@ public class LGor {
             //javax.swing.plaf.basic.BasicLookAndFeel //ไม่เปลี่ยน
             //com.sun.java.swing.plaf.motif.MotifLookAndFeel //หิน
             /**
-             * 
-             * Name      = Metal
-                ClassName = javax.swing.plaf.metal.MetalLookAndFeel
-                Name      = Nimbus
-                ClassName = javax.swing.plaf.nimbus.NimbusLookAndFeel
-                Name      = CDE/Motif
-                ClassName = com.sun.java.swing.plaf.motif.MotifLookAndFeel
-                Name      = Mac OS X
-                ClassName = com.apple.laf.AquaLookAndFeel
-                * 
-                * 
-                * 
+             *
+             * Name = Metal ClassName = javax.swing.plaf.metal.MetalLookAndFeel
+             * Name = Nimbus ClassName =
+             * javax.swing.plaf.nimbus.NimbusLookAndFeel Name = CDE/Motif
+             * ClassName = com.sun.java.swing.plaf.motif.MotifLookAndFeel Name =
+             * Mac OS X ClassName = com.apple.laf.AquaLookAndFeel
+             *
+             *
+             *
              */
             //UIManager.setLookAndFeel("javax.swing.plaf.multi.MultiLookAndFeel");
-       
+
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
         }

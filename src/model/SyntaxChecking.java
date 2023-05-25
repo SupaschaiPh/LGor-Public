@@ -79,9 +79,11 @@ public abstract class SyntaxChecking {
                 varName = varName.replace("==", "=");
                 varName = varName.replace("-", "");
                 varName = varName.replace("+", "");
-                varName = varName.replace("if", "");
-                varName = varName.replace("for", "");
+                varName = varName.replace("if->", "");
+                varName = varName.replace("for->", "");
 
+                System.out.println(varName);
+                
                 if(curCommand.indexOf("<") != -1){
                     splitKey +="<";
                 }else if(curCommand.indexOf(">") != -1){
